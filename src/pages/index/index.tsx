@@ -311,7 +311,7 @@ class Index extends Component {
   componentDidHide() {}
 
   render() {
-    const { showLoading, bannerList, searchValue } = this.state
+    const {bannerList} = this.state
     return (
       <View className="index">
         <Swiper
