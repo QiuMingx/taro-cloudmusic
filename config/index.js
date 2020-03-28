@@ -1,5 +1,5 @@
 const config = {
-  projectName: 'myTest',
+  projectName: 'taro-cloudmusic',
   date: '2020-3-22',
   designWidth: 750,
   deviceRatio: {
