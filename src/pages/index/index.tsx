@@ -8,6 +8,7 @@ import {
   Swiper,
   SwiperItem
 } from "@tarojs/components";
+import { AtTabBar, AtSearchBar, AtIcon } from 'taro-ui'
 import { connect } from "@tarojs/redux";
 
 import { add, minus, asyncAdd } from "../../actions/counter";
@@ -38,7 +39,13 @@ type PageDispatchProps = {
 
 type PageOwnProps = {};
 
-type PageState = {};
+type PageState = {
+  bannerList: Array<{
+    typeTitle: string,
+    pic: string,
+    targetId: number
+  }>,
+};
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
@@ -79,6 +86,7 @@ class Index extends Component {
     this.state = {
       current: 0,
       showLoading: true,
+      searchValue:'',
       bannerList: [
         {
             "imageUrl": "http://p1.music.126.net/kFZwGAEN2QVBBaA7j_JaEA==/109951164822589998.jpg",
@@ -297,7 +305,6 @@ class Index extends Component {
             "scm": "1.music-homepage.homepage_banner_force.banner.653398.176942018.null"
         }
     ],
-      searchValue: ''
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -311,9 +318,14 @@ class Index extends Component {
   componentDidHide() {}
 
   render() {
-    const {bannerList} = this.state
+    const {bannerList,searchValue} = this.state
     return (
       <View className="index">
+        <AtSearchBar
+          actionName='搜一下'
+          value={searchValue}
+          onChange={(val)=>console.log(val)}
+        />
         <Swiper
          className='test-h'
          indicatorColor='#999'
@@ -323,7 +335,7 @@ class Index extends Component {
          autoplay
         >
          {
-            bannerList.map((item) => 
+            bannerList.map((item) =>
               <SwiperItem key={item.targetId}>
                 <Image src={item.imageUrl} className='img'/>
               </SwiperItem>
