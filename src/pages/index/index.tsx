@@ -87,6 +87,7 @@ class Index extends Component {
       current: 0,
       showLoading: true,
       searchValue:'',
+      recommendPlayList:[],
       bannerList: [
         {
             "imageUrl": "http://p1.music.126.net/kFZwGAEN2QVBBaA7j_JaEA==/109951164822589998.jpg",
@@ -320,7 +321,7 @@ class Index extends Component {
   render() {
     const {bannerList,searchValue} = this.state
     return (
-      <View className="index">
+      <View className="index_container">
         <AtSearchBar
           actionName='搜一下'
           value={searchValue}
@@ -342,6 +343,23 @@ class Index extends Component {
             )
         }
         </Swiper>
+        <View className='recommend_playlist'>
+          <View className='recommend_playlist__title'>
+            推荐歌单
+          </View>
+          <View className='recommend_playlist__content'>
+
+            <View className='recommend_playlist__item bg'>A</View>
+            <View className='recommend_playlist__item bg'>B</View>
+            <View className='recommend_playlist__item bg'>C</View>
+            <View className='recommend_playlist__item bg'>D</View>
+            <View className='recommend_playlist__item bg'>E</View>
+            <View className='recommend_playlist__item bg'>E</View>
+            <View className='recommend_playlist__item bg'>E</View>
+          </View>
+
+        </View>
+
       </View>
     );
   }
