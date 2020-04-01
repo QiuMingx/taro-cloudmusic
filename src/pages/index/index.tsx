@@ -702,6 +702,11 @@ class Index extends Component {
   formatPlayCount = count =>{
     return count < 10000 ? count : `${Number(count/10000).toFixed(0)}万`
   }
+  goDetail = item => {
+   Taro.navigateTo({
+     url: `/pages/playListDetail/index?id=${item.id}&name=${item.name}`
+   })
+ }
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
   }
@@ -744,7 +749,7 @@ class Index extends Component {
           <View className='recommend_playlist__content'>
             {
               recommendPlayList&&recommendPlayList.map(item =>
-                <View className='recommend_playlist__item' key={item.id} >
+                <View className='recommend_playlist__item' key={item.id} onClick={()=>this.goDetail(item)}>
                   <Image
                       src={item.picUrl+'?imageView&thumbnail=0x200'}
                       className='recommend_playlist__item__img'
