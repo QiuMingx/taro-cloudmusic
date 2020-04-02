@@ -78,13 +78,13 @@ class PlayListDetail extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: "首页"
+    navigationBarTitleText: "歌单详情"
   };
 
   constructor (props) {
     super(props)
     this.state = {
-      playList:{
+      playListDetail:{
         "subscribers": [
             {
                 "defaultAvatar": false,
@@ -1877,14 +1877,41 @@ class PlayListDetail extends Component {
   componentDidHide() {}
 
   render() {
-    const { playList } = this.state
-    if (!playList) return
+    const { playListDetail } = this.state
+    if (!playListDetail) return
     return (
-      <View className="index_container">
-        <Image
-            className='header__bg'
-            src={playList.coverImgUrl+'?imageView&thumbnail=252x252'}
-        />
+      <View className="playListDetail_container">
+        <View className='playList__header'>
+          <Image
+            className='playList__header__bg'
+            src={playListDetail.coverImgUrl}
+          />
+          <View className='playList__header__cover'>
+            <Image
+              className='playList__header__cover__img'
+              src={playListDetail.coverImgUrl}
+            />
+            <Text className='playList__header__cover__desc'>歌单</Text>
+            <View className='playList__header__cover__num'>
+              <Text className='at-icon at-icon-sound'></Text>
+              {
+                this.formatPlayCount(playListDetail.playCount)
+              }
+            </View>
+          </View>
+          <View className='playList__header__info'>
+            <View className='playList__header__info__title'>
+              {playListDetail.name}
+            </View>
+            <View className='playList__header__info__user'>
+              <Image
+                className='playList__header__info__user_avatar'
+                src={playListDetail.creator.avatarUrl}
+              />
+              {playListDetail.creator.nickname}
+            </View>
+          </View>
+        </View>
 
       </View>
     );
