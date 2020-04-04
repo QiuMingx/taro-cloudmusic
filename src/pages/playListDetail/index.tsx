@@ -1935,13 +1935,24 @@ class PlayListDetail extends Component {
              歌曲列表
           </View>
           <View className='playList__content__list'>
-            <Text className='playList__content__list__item__index'>{1}</Text>
-            <View className='playList__content__list__item__info'>
-              <View className='playList__content__list__item__info__name'>
-                '网易云音乐'
-              </View>
+            {
+              playListDetail.tracks.map((item,index) =>   <View
+                className='playList__content__list__item'
+                key={item.id}
+                >
+                  <Text className='playList__content__list__item__index'>{index+1}</Text>
+                  <View className='playList__content__list__item__info'>
+                    <View className='playList__content__list__item__info__name'>
+                       {item.name}
+                    </View>
+                    <View className='playList__content__list__item__info__desc'>
+                      {item.ar[0] ? item.ar[0].name : ''} - {item.al.name}
+                    </View>
+                    <Text className='at-icon at-icon-chevron-right'></Text>
+                  </View>
+                </View>)
+            }
 
-            </View>
           </View>
         </View>
       </View>
