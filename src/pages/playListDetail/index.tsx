@@ -1841,7 +1841,8 @@ class PlayListDetail extends Component {
         "subscribedCount": 3644787,
         "cloudTrackCount": 0,
         "tags": [
-            "华语"
+            "华语",
+            "流行"
         ],
         "createTime": 1505779515127,
         "highQuality": false,
@@ -1912,7 +1913,37 @@ class PlayListDetail extends Component {
             </View>
           </View>
         </View>
+        <View className='playList__header__more'>
+          <View className='playList__header__more__tag'>
+             标签：
+             {
+               playListDetail.tags.map(tag =>
+                 <Text key={tag} className='playList__header__more__tag__item'>
+                  {tag}
+                </Text>)
+             }
+             {
+               playListDetail.tags.length === 0 ? '暂无' : ''
+             }
+         </View>
+         <View className='playList__header__more__desc'>
+             简介：{playListDetail.description || '暂无'}
+         </View>
+        </View>
+        <View className='playList__content'>
+          <View className='playList__content__title'>
+             歌曲列表
+          </View>
+          <View className='playList__content__list'>
+            <Text className='playList__content__list__item__index'>{1}</Text>
+            <View className='playList__content__list__item__info'>
+              <View className='playList__content__list__item__info__name'>
+                '网易云音乐'
+              </View>
 
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
