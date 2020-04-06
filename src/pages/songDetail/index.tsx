@@ -15,6 +15,8 @@ import { add, minus, asyncAdd } from "../../actions/counter";
 
 import "./index.less";
 import topImage from '../../assets/images/aag.png'
+import stopIcon from '../../assets/images/ajd.png'
+import playIcon from '../../assets/images/ajf.png'
 
 
 // #region 书写注意
@@ -87,7 +89,7 @@ class Page extends Component {
     super(props)
     this.state = {
       current: 0,
-      showLoading: true,
+      play: false,
       searchValue:'',
       currentSongInfo:{
           "name": "达拉崩吧 (Live)",
@@ -158,7 +160,12 @@ class Page extends Component {
 
     }
   }
-
+  playMusic = () => {
+    console.log('play')
+    this.setState((prevState, props)=>({
+     play: !prevState.play
+   }))
+  }
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
   }
@@ -170,7 +177,7 @@ class Page extends Component {
   componentDidHide() {}
 
   render() {
-    const {currentSongInfo} = this.state
+    const {play} = this.state
     return (
       <View className='song_container'>
         <Image
@@ -180,11 +187,18 @@ class Page extends Component {
         <View className='song__music'>
           <View className='song__music__main'>
             <Image
-            className='song__music__main__needle'
+            className={play ? 'song__music__main__needle' : 'song__music__main__needle play'}
             src={topImage}
             />
           </View>
         </View>
+       <View className='song__bottom'>
+         <Image
+            src={playIcon}
+            className='song__operation__prev'
+            onClick={()=>this.playMusic()}
+          />
+       </View>
       </View>
     );
   }
