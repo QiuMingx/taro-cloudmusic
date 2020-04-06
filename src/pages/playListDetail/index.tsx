@@ -1867,6 +1867,11 @@ class PlayListDetail extends Component {
   formatPlayCount = count =>{
     return count < 10000 ? count : `${Number(count/10000).toFixed(0)}万`
   }
+  playSong = (songId) =>{
+    Taro.navigateTo({
+        url: `/pages/songDetail/index?id=${songId}`
+    })
+  }
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
   }
@@ -1939,6 +1944,7 @@ class PlayListDetail extends Component {
               playListDetail.tracks.map((item,index) =>   <View
                 className='playList__content__list__item'
                 key={item.id}
+                onClick={()=>this.playSong(item.id)}
                 >
                   <Text className='playList__content__list__item__index'>{index+1}</Text>
                   <View className='playList__content__list__item__info'>
@@ -1946,7 +1952,7 @@ class PlayListDetail extends Component {
                        {item.name}
                     </View>
                     <View className='playList__content__list__item__info__desc'>
-                      {item.ar[0] ? item.ar[0].name : ''} - {item.al.name}
+                        {item.ar[0] ? item.ar[0].name : ''} - {item.al.name}
                     </View>
                     <Text className='at-icon at-icon-chevron-right'></Text>
                   </View>
