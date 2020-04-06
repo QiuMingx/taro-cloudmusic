@@ -161,7 +161,6 @@ class Page extends Component {
     }
   }
   playMusic = () => {
-    console.log('play')
     this.setState((prevState, props)=>({
      play: !prevState.play
    }))
