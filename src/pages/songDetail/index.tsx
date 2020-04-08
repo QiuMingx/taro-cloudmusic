@@ -17,6 +17,10 @@ import "./index.less";
 import topImage from '../../assets/images/aag.png'
 import stopIcon from '../../assets/images/ajd.png'
 import playIcon from '../../assets/images/ajf.png'
+import prevIcon from '../../assets/images/ajh.png'
+import nextIcon from '../../assets/images/ajb.png'
+import likeIcon from '../../assets/images/song/play_icn_loved.png'
+import playModeImg from '../../assets/images/song/icn_loop_mode.png'
 
 
 // #region 书写注意
@@ -82,7 +86,7 @@ class Page extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: "首页"
+    navigationBarTitleText: '歌单详情'
   };
 
   constructor (props) {
@@ -189,14 +193,36 @@ class Page extends Component {
             className={play ? 'song__music__main__needle' : 'song__music__main__needle play'}
             src={topImage}
             />
+            <View className='song__music__main__cover'>
+              <View className='song__music__main__img'>
+                <Image className='song__music__main__img__cover' src={currentSongInfo.al.picUrl} />
+              </View>
+            </View>
           </View>
         </View>
        <View className='song__bottom'>
-         <Image
+         <View className='song__operation'>
+           <Image
+             src={playModeImg}
+             className='song__operation__mode'
+           />
+           <Image
+              src={prevIcon}
+              className='song__operation__prev'
+            />
+          <Image
             src={playIcon}
-            className='song__operation__prev'
-            onClick={()=>this.playMusic()}
-          />
+            className='song__operation__play'
+            />
+          <Image
+             src={nextIcon}
+             className='song__operation__next'
+           />
+           <Image
+             src={likeIcon}
+             className='song__operation__like'
+            />
+         </View>
        </View>
       </View>
     );
