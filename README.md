@@ -1,1 +1,16 @@
 # taro-cloudmusic
+
+## Getting Started
+
+Install dependencies,
+
+```bash
+$ yarn
+```
+
+Start the dev server,
+
+```bash
+$ yarn dev:weapp
+
+```
