@@ -1,18 +1,9 @@
 import { ComponentClass } from "react";
 import Taro, { Component, Config } from "@tarojs/taro";
-import {
-  View,
-  Button,
-  Text,
-  Image,
-  Swiper,
-  SwiperItem
-} from "@tarojs/components";
-import { AtTabBar, AtSearchBar, AtIcon } from 'taro-ui'
+import {View,Button,Text,Image} from "@tarojs/components";
 import { connect } from "@tarojs/redux";
-
+import classnames from 'classnames'
 import { add, minus, asyncAdd } from "../../actions/counter";
-
 import "./index.less";
 import topImage from '../../assets/images/aag.png'
 import stopIcon from '../../assets/images/ajd.png'
@@ -194,7 +185,12 @@ class Page extends Component {
             src={topImage}
             />
             <View className='song__music__main__cover'>
-              <View className='song__music__main__img'>
+              <View className={
+                classnames({
+                  song__music__main__img: true,
+                  'z-pause': !play,
+                  circling: true
+                })}>
                 <Image className='song__music__main__img__cover' src={currentSongInfo.al.picUrl} />
               </View>
             </View>
@@ -212,6 +208,7 @@ class Page extends Component {
             />
           <Image
             src={playIcon}
+            onClick={()=>this.playMusic()}
             className='song__operation__play'
             />
           <Image
