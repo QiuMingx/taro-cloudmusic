@@ -62,7 +62,8 @@ class App extends Component {
         // iconPath: 'assets/images/me.png',
         // selectedIconPath: 'assets/images/selected-me.png',
       }]
-    }
+    },
+    requiredBackgroundModes: ["audio"]
   }
 
   componentDidMount() { }

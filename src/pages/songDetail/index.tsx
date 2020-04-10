@@ -51,7 +51,7 @@ type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 interface Index {
   props: IProps;
 }
-
+const backgroundAudioManager = Taro.getBackgroundAudioManager()
 @connect(
   ({ counter }) => ({
     counter
@@ -159,7 +159,21 @@ class Page extends Component {
     this.setState((prevState, props)=>({
      play: !prevState.play
    }))
+   backgroundAudioManager.title='11'
+   backgroundAudioManager.src = 'http://m8.music.126.net/20200411003213/233159ef3cf4c4b73503a4bb71525182/ymusic/9313/cfac/35ad/332d8257716efd86d075809e61cfd5d5.mp3'
+   backgroundAudioManager.play()
   }
+  // componentDidMount(){
+  //   backgroundAudioManager.onTimeUpdate(() => {
+  //      Taro.getBackgroundAudioPlayerState({
+  //        success(res) {
+  //          if (res.status !== 2) {
+  //            console.log('11')
+  //          }
+  //        }
+  //      })
+  //    })
+  // }
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
   }
