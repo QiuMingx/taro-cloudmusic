@@ -706,18 +706,7 @@ class Index extends Component {
    Taro.navigateTo({
      url: `/pages/playListDetail/index?id=${item.id}&name=${item.name}`
    })
- }
- componentDidMount(){
-   backgroundAudioManager.onTimeUpdate(() => {
-      Taro.getBackgroundAudioPlayerState({
-        success(res) {
-          if (res.status !== 2) {
-            console.log('11')
-          }
-        }
-      })
-    })
- }
+ } 
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
   }

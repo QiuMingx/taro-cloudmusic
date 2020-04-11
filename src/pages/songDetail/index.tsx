@@ -159,7 +159,7 @@ class Page extends Component {
     this.setState((prevState, props)=>({
      play: !prevState.play
    }))
-   backgroundAudioManager.title='11'
+   backgroundAudioManager.title='追光者'
    backgroundAudioManager.src = 'http://m8.music.126.net/20200411003213/233159ef3cf4c4b73503a4bb71525182/ymusic/9313/cfac/35ad/332d8257716efd86d075809e61cfd5d5.mp3'
    backgroundAudioManager.play()
   }
@@ -195,7 +195,7 @@ class Page extends Component {
         <View className='song__music'>
           <View className='song__music__main'>
             <Image
-            className={play ? 'song__music__main__needle' : 'song__music__main__needle play'}
+            className={play ? 'song__music__main__needle play ' : 'song__music__main__needle '}
             src={topImage}
             />
             <View className='song__music__main__cover'>
