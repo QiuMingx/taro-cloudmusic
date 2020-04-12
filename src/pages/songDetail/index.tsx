@@ -5,6 +5,7 @@ import { connect } from "@tarojs/redux";
 import classnames from 'classnames'
 import { add, minus, asyncAdd } from "../../actions/counter";
 import "./index.less";
+import CSlider from '../../components/CSlider'
 import topImage from '../../assets/images/aag.png'
 import stopIcon from '../../assets/images/ajd.png'
 import playIcon from '../../assets/images/ajf.png'
@@ -86,6 +87,7 @@ class Page extends Component {
       current: 0,
       play: false,
       searchValue:'',
+      playPercent: 0 ,
       currentSongInfo:{
           "name": "达拉崩吧 (Live)",
           "id": 1434062381,
@@ -174,6 +176,18 @@ class Page extends Component {
   //      })
   //    })
   // }
+  percentChange=(e)=> {
+    // console.log(e)
+    const { value } = e.detail
+    const { dt } = this.props.song.currentSongInfo
+    let currentPosition = Math.floor((dt / 1000) * value / 100)
+    backgroundAudioManager.seek(currentPosition)
+    backgroundAudioManager.play()
+  }
+  percentChanging =()=>{
+    backgroundAudioManager.pause()
+  }
+
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
   }
@@ -185,7 +199,7 @@ class Page extends Component {
   componentDidHide() {}
 
   render() {
-    const {play} = this.state
+    const {play,playPercent} = this.state
     return (
       <View className='song_container'>
         <Image
@@ -210,6 +224,7 @@ class Page extends Component {
             </View>
           </View>
         </View>
+       <CSlider percent={playPercent} onChange={(e)=>this.percentChange(e)} onChanging={()=>this.percentChanging()} />
        <View className='song__bottom'>
          <View className='song__operation'>
            <Image
