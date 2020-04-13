@@ -6,6 +6,7 @@ import classnames from 'classnames'
 import { add, minus, asyncAdd } from "../../actions/counter";
 import "./index.less";
 import CSlider from '../../components/CSlider'
+import CLyric from '../../components/CLyric'
 import topImage from '../../assets/images/aag.png'
 import stopIcon from '../../assets/images/ajd.png'
 import playIcon from '../../assets/images/ajf.png'
@@ -87,7 +88,7 @@ class Page extends Component {
       current: 0,
       play: false,
       searchValue:'',
-      playPercent: 0 ,
+      playPercent: 10 ,
       currentSongInfo:{
           "name": "达拉崩吧 (Live)",
           "id": 1434062381,
@@ -159,11 +160,17 @@ class Page extends Component {
   }
   playMusic = () => {
     this.setState((prevState, props)=>({
-     play: !prevState.play
+     play: true
    }))
    backgroundAudioManager.title='追光者'
    backgroundAudioManager.src = 'http://m8.music.126.net/20200411003213/233159ef3cf4c4b73503a4bb71525182/ymusic/9313/cfac/35ad/332d8257716efd86d075809e61cfd5d5.mp3'
    backgroundAudioManager.play()
+  }
+  pauseMusic =()=> {
+    backgroundAudioManager.pause()
+    this.setState({
+      play: false
+    })
   }
   // componentDidMount(){
   //   backgroundAudioManager.onTimeUpdate(() => {
@@ -176,8 +183,8 @@ class Page extends Component {
   //      })
   //    })
   // }
-  percentChange=(e)=> {
-    // console.log(e)
+  percentChange = (e) => {
+    console.log(e)
     const { value } = e.detail
     const { dt } = this.props.song.currentSongInfo
     let currentPosition = Math.floor((dt / 1000) * value / 100)
@@ -199,7 +206,8 @@ class Page extends Component {
   componentDidHide() {}
 
   render() {
-    const {play,playPercent} = this.state
+    const {play} = this.state
+    const { isPlaying, showLyric, lrc, lrcIndex, star, playPercent } = this.state
     return (
       <View className='song_container'>
         <Image
@@ -225,6 +233,7 @@ class Page extends Component {
           </View>
         </View>
        <CSlider percent={playPercent} onChange={(e)=>this.percentChange(e)} onChanging={()=>this.percentChanging()} />
+       <CLyric lrc={lrc} lrcIndex={lrcIndex} showLyric={showLyric} onTrigger={() => this.hiddenLyric()} />
        <View className='song__bottom'>
          <View className='song__operation'>
            <Image
@@ -235,11 +244,11 @@ class Page extends Component {
               src={prevIcon}
               className='song__operation__prev'
             />
-          <Image
-            src={playIcon}
-            onClick={()=>this.playMusic()}
-            className='song__operation__play'
-            />
+            {
+                play ? <Image src={stopIcon} className='song__operation__play' onClick={()=>this.pauseMusic()}/> :
+                <Image src={playIcon} className='song__operation__play' onClick={()=>this.playMusic()}/>
+            }
+
           <Image
              src={nextIcon}
              className='song__operation__next'
