@@ -14,3 +14,5 @@ Start the dev server,
 $ yarn dev:weapp
 
 ```
+##API Service
+[NeteaseCloudMusicApi](https://binaryify.github.io/NeteaseCloudMusicApi/#/)
