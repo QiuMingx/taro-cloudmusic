@@ -27,10 +27,11 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/songDetail/index',
-      'pages/playListDetail/index',
+
 
       'pages/index/index',
+      'pages/songDetail/index',
+      'pages/playListDetail/index',
 
     ],
     window: {
