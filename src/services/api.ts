@@ -1,8 +1,12 @@
 import Taro from '@tarojs/taro'
+<<<<<<< Updated upstream
+=======
+import { HTTP_STATUS } from '../config/status'
+>>>>>>> Stashed changes
 import { baseUrl } from '../config'
 
 export default {
-  baseOptions(params, method = 'GET') {
+  request(params, method = 'GET') {
     let { url, data } = params
     let contentType = 'application/json'
     contentType = params.contentType || contentType
@@ -81,18 +85,18 @@ export default {
   },
   get(url, data?: object) {
     let option = { url, data }
-    return this.baseOptions(option)
+    return this.request(option)
   },
   post: function (url, data?: object, contentType?: string) {
     let params = { url, data, contentType }
-    return this.baseOptions(params, 'POST')
+    return this.request(params, 'POST')
   },
   put(url, data?: object) {
     let option = { url, data }
-    return this.baseOptions(option, 'PUT')
+    return this.request(option, 'PUT')
   },
   delete(url, data?: object) {
     let option = { url, data }
-    return this.baseOptions(option, 'DELETE')
+    return this.request(option, 'DELETE')
   }
 }

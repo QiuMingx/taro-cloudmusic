@@ -330,6 +330,9 @@ class Index extends Component {
      url: `/pages/playListDetail/index?id=${item.id}&name=${item.name}`
    })
  }
+ componentDidMount() {
+    this.props.getRecommendPlayList()
+ }
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
   }
@@ -341,7 +344,8 @@ class Index extends Component {
   componentDidHide() {}
 
   render() {
-    const {bannerList,searchValue,recommendPlayList} = this.state
+    const {bannerList,searchValue} = this.state
+    const {recommendPlayList } = this.props
     return (
       <View className="index_container">
         <AtSearchBar
