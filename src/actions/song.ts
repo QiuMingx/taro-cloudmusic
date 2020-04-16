@@ -26,6 +26,7 @@ export function asyncAdd () {
 export const getRecommendPlayList = () => {
   return dispatch => {
     api.get('/personalized').then((res) => {
+      console.log(res.data.result)
       let recommendPlayList = res.data.result
       dispatch({
         type: GETRECOMMENDPLAYLIST,

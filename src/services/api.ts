@@ -1,8 +1,5 @@
 import Taro from '@tarojs/taro'
-<<<<<<< Updated upstream
-=======
 import { HTTP_STATUS } from '../config/status'
->>>>>>> Stashed changes
 import { baseUrl } from '../config'
 
 export default {
