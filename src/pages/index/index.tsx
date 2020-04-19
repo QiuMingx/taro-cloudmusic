@@ -10,7 +10,8 @@ import {
 } from "@tarojs/components";
 import { AtTabBar, AtSearchBar, AtIcon } from 'taro-ui'
 import { connect } from "@tarojs/redux";
-
+import PlayList from '../../components/PlayList'
+import api from '../../services/api'
 import { add, minus, asyncAdd } from "../../actions/counter";
 import { getRecommendPlayList } from "../../actions/song";
 
@@ -326,6 +327,7 @@ class Index extends Component {
     return count < 10000 ? count : `${Number(count/10000).toFixed(0)}万`
   }
   goDetail = item => {
+    console.log(item)
    Taro.navigateTo({
      url: `/pages/playListDetail/index?id=${item.id}&name=${item.name}`
    })
@@ -374,7 +376,11 @@ class Index extends Component {
             推荐歌单
           </View>
           <View className='recommend_playlist__content'>
-            {
+            <PlayList
+              goDetail={(item)=>this.goDetail(item)}
+              source={recommendPlayList}
+            />
+            {/* {
               recommendPlayList&&recommendPlayList.map(item =>
                 <View className='recommend_playlist__item' key={item.id} onClick={()=>this.goDetail(item)}>
                   <Image
@@ -389,7 +395,7 @@ class Index extends Component {
                     </View>
                     <View className='recommend_playlist__item__title'>{item.name}</View>
                 </View>)
-            }
+            } */}
 
           </View>
 
