@@ -11,7 +11,7 @@ import {
 import { AtTabBar, AtSearchBar, AtIcon } from 'taro-ui'
 import { connect } from "@tarojs/redux";
 import PlayList from '../../components/PlayList'
-import api from '../../services/api'
+import API from '../../services/api'
 import { add, minus, asyncAdd } from "../../actions/counter";
 import { getRecommendPlayList } from "../../actions/song";
 
@@ -103,224 +103,7 @@ class Index extends Component {
       current: 0,
       showLoading: true,
       searchValue:'',
-      bannerList: [
-        {
-            "imageUrl": "http://p1.music.126.net/kFZwGAEN2QVBBaA7j_JaEA==/109951164822589998.jpg",
-            "targetId": 86670457,
-            "adid": null,
-            "targetType": 10,
-            "titleColor": "red",
-            "typeTitle": "独家",
-            "url": null,
-            "exclusive": false,
-            "monitorImpress": null,
-            "monitorClick": null,
-            "monitorType": null,
-            "monitorImpressList": null,
-            "monitorClickList": null,
-            "monitorBlackList": null,
-            "extMonitor": null,
-            "extMonitorInfo": null,
-            "adSource": null,
-            "adLocation": null,
-            "adDispatchJson": null,
-            "encodeId": "86670457",
-            "program": null,
-            "event": null,
-            "video": null,
-            "song": null,
-            "scm": "1.music-homepage.homepage_banner_force.banner.651355.176706422.null"
-        },
-        {
-            "imageUrl": "http://p1.music.126.net/vwVck1nqm3GhIQQTE6RMZg==/109951164826113808.jpg",
-            "targetId": 1432256576,
-            "adid": null,
-            "targetType": 1,
-            "titleColor": "red",
-            "typeTitle": "独家",
-            "url": null,
-            "exclusive": false,
-            "monitorImpress": null,
-            "monitorClick": null,
-            "monitorType": null,
-            "monitorImpressList": null,
-            "monitorClickList": null,
-            "monitorBlackList": null,
-            "extMonitor": null,
-            "extMonitorInfo": null,
-            "adSource": null,
-            "adLocation": null,
-            "adDispatchJson": null,
-            "encodeId": "1432256576",
-            "program": null,
-            "event": null,
-            "video": null,
-            "song": null,
-            "scm": "1.music-homepage.homepage_banner_force.banner.656372.-409939709.null"
-        },
-        {
-            "imageUrl": "http://p1.music.126.net/sMBDF5HEZBqF132oW4gt4Q==/109951164826015569.jpg",
-            "targetId": 1431866827,
-            "adid": null,
-            "targetType": 1,
-            "titleColor": "red",
-            "typeTitle": "独家",
-            "url": null,
-            "exclusive": false,
-            "monitorImpress": null,
-            "monitorClick": null,
-            "monitorType": null,
-            "monitorImpressList": null,
-            "monitorClickList": null,
-            "monitorBlackList": null,
-            "extMonitor": null,
-            "extMonitorInfo": null,
-            "adSource": null,
-            "adLocation": null,
-            "adDispatchJson": null,
-            "encodeId": "1431866827",
-            "program": null,
-            "event": null,
-            "video": null,
-            "song": null,
-            "scm": "1.music-homepage.homepage_banner_force.banner.650352.176799758.null"
-        },
-        {
-            "imageUrl": "http://p1.music.126.net/TLvyLNCDGS2ha8wFrMNH0Q==/109951164828756945.jpg",
-            "targetId": 1432772691,
-            "adid": null,
-            "targetType": 1,
-            "titleColor": "red",
-            "typeTitle": "独家",
-            "url": null,
-            "exclusive": false,
-            "monitorImpress": null,
-            "monitorClick": null,
-            "monitorType": null,
-            "monitorImpressList": null,
-            "monitorClickList": null,
-            "monitorBlackList": null,
-            "extMonitor": null,
-            "extMonitorInfo": null,
-            "adSource": null,
-            "adLocation": null,
-            "adDispatchJson": null,
-            "encodeId": "1432772691",
-            "program": null,
-            "event": null,
-            "video": null,
-            "song": null,
-            "scm": "1.music-homepage.homepage_banner_force.banner.652359.176948624.null"
-        },
-        {
-            "imageUrl": "http://p1.music.126.net/EPOPT-6hmGziyahe6_Q-lQ==/109951164828735989.jpg",
-            "targetId": 1432959007,
-            "adid": null,
-            "targetType": 1,
-            "titleColor": "red",
-            "typeTitle": "独家",
-            "url": null,
-            "exclusive": false,
-            "monitorImpress": null,
-            "monitorClick": null,
-            "monitorType": null,
-            "monitorImpressList": null,
-            "monitorClickList": null,
-            "monitorBlackList": null,
-            "extMonitor": null,
-            "extMonitorInfo": null,
-            "adSource": null,
-            "adLocation": null,
-            "adDispatchJson": null,
-            "encodeId": "1432959007",
-            "program": null,
-            "event": null,
-            "video": null,
-            "song": null,
-            "scm": "1.music-homepage.homepage_banner_force.banner.657370.176860244.null"
-        },
-        {
-            "imageUrl": "http://p1.music.126.net/jor7JLklkqbvCPy9kEu6Fw==/109951164828728913.jpg",
-            "targetId": 86712363,
-            "adid": null,
-            "targetType": 10,
-            "titleColor": "red",
-            "typeTitle": "独家",
-            "url": null,
-            "exclusive": false,
-            "monitorImpress": null,
-            "monitorClick": null,
-            "monitorType": null,
-            "monitorImpressList": null,
-            "monitorClickList": null,
-            "monitorBlackList": null,
-            "extMonitor": null,
-            "extMonitorInfo": null,
-            "adSource": null,
-            "adLocation": null,
-            "adDispatchJson": null,
-            "encodeId": "86712363",
-            "program": null,
-            "event": null,
-            "video": null,
-            "song": null,
-            "scm": "1.music-homepage.homepage_banner_force.banner.653400.-409935031.null"
-        },
-        {
-            "imageUrl": "http://p1.music.126.net/1qzbj-e60lom9hzzW_tKEQ==/109951164828753699.jpg",
-            "targetId": 1403215687,
-            "adid": null,
-            "targetType": 1,
-            "titleColor": "red",
-            "typeTitle": "新歌首发",
-            "url": null,
-            "exclusive": false,
-            "monitorImpress": null,
-            "monitorClick": null,
-            "monitorType": null,
-            "monitorImpressList": null,
-            "monitorClickList": null,
-            "monitorBlackList": null,
-            "extMonitor": null,
-            "extMonitorInfo": null,
-            "adSource": null,
-            "adLocation": null,
-            "adDispatchJson": null,
-            "encodeId": "1403215687",
-            "program": null,
-            "event": null,
-            "video": null,
-            "song": null,
-            "scm": "1.music-homepage.homepage_banner_force.banner.652357.176793750.null"
-        },
-        {
-            "imageUrl": "http://p1.music.126.net/l_N0QhPtycQO0UI1D8nnig==/109951164828699216.jpg",
-            "targetId": 10921857,
-            "adid": null,
-            "targetType": 1004,
-            "titleColor": "red",
-            "typeTitle": "独家专访",
-            "url": null,
-            "exclusive": false,
-            "monitorImpress": null,
-            "monitorClick": null,
-            "monitorType": null,
-            "monitorImpressList": null,
-            "monitorClickList": null,
-            "monitorBlackList": null,
-            "extMonitor": null,
-            "extMonitorInfo": null,
-            "adSource": null,
-            "adLocation": null,
-            "adDispatchJson": null,
-            "encodeId": "10921857",
-            "program": null,
-            "event": null,
-            "video": null,
-            "song": null,
-            "scm": "1.music-homepage.homepage_banner_force.banner.653398.176942018.null"
-        }
-    ],
+      bannerList: [],
     }
   }
   formatPlayCount = count =>{
@@ -333,7 +116,9 @@ class Index extends Component {
    })
  }
  componentDidMount() {
+   /*获取推荐歌单*/
     this.props.getRecommendPlayList()
+    this.getBanner()
  }
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
@@ -345,6 +130,18 @@ class Index extends Component {
 
   componentDidHide() {}
 
+  getBanner = ()=> {
+    API.get('/banner', {
+      type: 2
+    }).then(({ data }) => {
+      console.log('banner', data)
+      if (data.banners) {
+        this.setState({
+          bannerList: data.banners
+        })
+      }
+    })
+  }
   render() {
     const {bannerList,searchValue} = this.state
     const {recommendPlayList } = this.props
@@ -366,7 +163,7 @@ class Index extends Component {
          {
             bannerList.map((item) =>
               <SwiperItem key={item.targetId}>
-                <Image src={item.imageUrl} className='img'/>
+                <Image src={item.pic} className='img'/>
               </SwiperItem>
             )
         }
