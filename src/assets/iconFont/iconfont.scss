@@ -1,0 +1,28 @@
+// @font-face {font-family: "iconfont";
+//   src: url('iconfont.eot?t=1587478740132'); /* IE9 */
+//   src: url('iconfont.eot?t=1587478740132#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//   url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAKgAAsAAAAABkgAAAJTAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcApUZQE2AiQDCAsGAAQgBYRtBy4biQXIPmAMxlDrJgKSjppz2fhKk1d/EhO4g+KNeKjf7/XsfRsCUJlIQA2oCBS0QtZGtdLV+I5nXf33f01LLHSeb9lVESr0B/kHnEtZobCtkTNiunpqE27ddMl8LQEXQDthjrJSAyBQ/8uCh/zcCFTsL9XiZgZcTn8CPch/dUC57UljDhwTMLA00D0wihMpoYwbxi54gfcJNBtXFj0YLdaRjGQvC8SroUmRTCEkJcs2CvUNe1N8U6exfJTwNfp+/LMWGYq6il13/DJUI52fHyevUuMqIIQJ6HAdKqyKSOK8MXUoLhgX13w8YVpESsHPa2OnOKpNsL/OrmwFo1D+TApP+aiVBWQy2StiZNJ7KF3VhV73Fskvfecd8N1nz63rq5lV6fGndMf3ebcqHr1R2fsGOuBn1X7st0DwwUsb/y3Bj6aKrGmYh8bduIPfoRg4kIbKdpTUFI2eonfS0oJmzajBvm5/U819586FRn134GkwlqHSaJZMdhV1WqyjXqNtNFsxPtyiB4mLbMKyJ0Do9IWi3XdUOn3IZH9Rp98/6nVGHM0uo+fMFvNh5PYJJUYV5BMYiucK18W5uHqJ2s6WKK+K+C1SaEShUa2Xs2N0kZbYEO61JrMAQZ4DI/AY2rYHPnkmKlzVmf12rSaaXlRVPCeSs48gCUMqIDsBBoXHJYLxLFf5/BLS7Ngk1NFSl95CJGRMDxqq6gPIsd4d1PIoz4T2NE2MCUAgHgcYgVnIZvMAv3mWCSlYlT4h4WurOaPEUH11e6PzA2WsA9tSwmmu5GdbOkUiAAAA') format('woff2'),
+//   url('iconfont.woff?t=1587478740132') format('woff'),
+//   url('iconfont.ttf?t=1587478740132') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+//   url('iconfont.svg?t=1587478740132#iconfont') format('svg'); /* iOS 4.1- */
+// }
+@font-face {
+  font-family: 'iconfont';
+  /* 自行安装第三方字体图标库 */
+  src: url('../customFont/iconfont.eot?v=4.7.0');
+  src: url('../customFont/iconfont.woff2?v=4.7.0') format('woff2'), url('../customFont/iconfont.woff?v=4.7.0') format('woff'), url('../customFont/iconfont.ttf?v=4.7.0') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-play:before {
+  content: "\e6cd";
+}

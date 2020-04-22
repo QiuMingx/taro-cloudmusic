@@ -2,7 +2,9 @@ import Taro, { FC } from '@tarojs/taro'
 import { View, Slider } from '@tarojs/components'
 import { AtTabBar, AtSearchBar, AtIcon } from 'taro-ui'
 import './index.less'
-import 'taro-ui/dist/style/index.scss'
+import '../../assets/iconFont/iconfont.scss'
+import 'taro-ui/dist/style/components/icon.scss'
+
 
 type Props = {
   source: Array<{
@@ -18,11 +20,12 @@ type Props = {
  const PlayList: FC<Props> = ({ source }) => {
 
    function formatPlayCount (count){
-     return count < 10000 ? count : `${Number(count/10000).toFixed(0)}万`
+     return count < 10000 ?
+            count
+            :count > 100000000 ? `${Number(count/100000000).toFixed(2)}亿` : `${Number(count/10000).toFixed(0)}万`
    }
   return (
     <View className='recommend_playlist__content'>
-      <Text className='at-icon at-icon-sound'></Text>
       {
         source&&source.map(item =>
           <View className='recommend_playlist__item' key={item.id} onClick={()=>this.props.goDetail(item)}>
@@ -32,8 +35,6 @@ type Props = {
               />
             <View className='recommend_playlist__item__cover__num'>
               <Text className='at-icon at-icon-play'></Text>
-                          <Text className='at-icon at-icon-sound'></Text>
-              <AtIcon value='play' size='14' color='#fff'></AtIcon>
               {formatPlayCount(item.playCount)}
             </View>
             <View className='recommend_playlist__item__title'>{item.name}</View>

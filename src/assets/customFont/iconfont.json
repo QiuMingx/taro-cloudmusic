@@ -1,0 +1,16 @@
+{
+  "id": "1748963",
+  "name": "taro-cloudMusic",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "708724",
+      "name": "play",
+      "font_class": "play",
+      "unicode": "e6cd",
+      "unicode_decimal": 59085
+    }
+  ]
+}

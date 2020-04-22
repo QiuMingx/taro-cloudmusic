@@ -7,6 +7,8 @@ import configStore from './store'
 
 import './app.less'
 import 'taro-ui/dist/style/index.scss'
+import './assets/iconFont/icon.scss'
+import './assets/iconFont/iconfont.scss'
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -44,6 +46,7 @@ class App extends Component {
       color: '#7A7E83',
       selectedColor: '#c73420',
       borderStyle: 'black',
+      position:'top',
       backgroundColor: '#ffffff',
       list: [{
         text: '发现',

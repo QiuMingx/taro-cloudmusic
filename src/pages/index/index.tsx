@@ -153,16 +153,16 @@ class Index extends Component {
           onChange={(val)=>console.log(val)}
         />
         <Swiper
-         className='test-h'
+         className='index_swiper'
          indicatorColor='#999'
          indicatorActiveColor='#333'
-         circular
+         circular={true}
          indicatorDots
          autoplay
         >
          {
             bannerList.map((item) =>
-              <SwiperItem key={item.targetId}>
+              <SwiperItem key={item.targetId} className='swiper_item'>
                 <Image src={item.pic} className='img'/>
               </SwiperItem>
             )
