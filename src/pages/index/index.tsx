@@ -168,6 +168,22 @@ class Index extends Component {
             )
         }
         </Swiper>
+        <View className="handle_list">
+          <View className="handle_list__item"
+
+          >
+          <View className="handle_list__item__icon-wrap">
+            <AtIcon
+              prefixClass="fa"
+              value="calendar-minus-o"
+              size="25"
+              color="#ffffff"
+              className="handle_list_item__icon"
+            ></AtIcon>
+          </View>
+          <Text className="handle_list__item__text">每日推荐</Text>
+        </View>
+        </View>
         <View className='recommend_playlist'>
           <View className='recommend_playlist__title'>
             推荐歌单
