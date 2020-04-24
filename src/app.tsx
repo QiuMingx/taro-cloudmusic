@@ -48,6 +48,7 @@ class App extends Component {
       borderStyle: 'black',
       position:'top',
       backgroundColor: '#ffffff',
+      custom:true,
       list: [{
         text: '发现',
         pagePath: 'pages/index/index',
