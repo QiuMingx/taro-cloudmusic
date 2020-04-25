@@ -1,33 +1,43 @@
-import Taro, {Component} from '@tarojs/taro'
-import {CoverView, CoverImage} from '@tarojs/components'
+import Taro, {
+  Component
+} from '@tarojs/taro'
+import {
+  CoverView, CoverImage
+} from '@tarojs/components'
 import Intellect from '../assets/images/tabBar/intellect.png'
-import homeActive from '../assets/images/tabBar/home-active.png'
-import home from '../assets/images/tabBar/home.png'
-import user from '../assets/images/tabBar/user.png'
-import userActive from '../assets/images/tabBar/user-active.png'
 import './index.scss'
 
 class customTabBar extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      selected: 1,
-      color: '#666',
-      selectedColor: '#ed6c00',
-      list: [{
-          pagePath: '/pages/index/index',
-          iconPath: home,
-          selectedIconPath: homeActive,
-          text: '主页'
-        },
-        {
-          pagePath: '/pages/index/index',
-          iconPath: user,
-          selectedIconPath: userActive,
-          text: '我的'
-        }
-      ]
-    }
+
+  state = {
+    selected: 0,
+    color: '#666',
+    selectedColor: '#ed6c00',
+    list: [{
+        pagePath: '/pages/index/index',
+        iconPath: '../assets/images/tabBar/home.png',
+        selectedIconPath: '../assets/images/tabBar/home-active.png',
+        text: '我的'
+      },
+      {
+        pagePath: '/pages/playListDetail/index',
+        iconPath: '../assets/images/tabBar/user.png',
+        selectedIconPath: '../assets/images/tabBar/user-active.png',
+        text: '发现'
+      },
+      {
+        pagePath: '/pages/playListDetail/index',
+        iconPath: '../assets/images/tabBar/user.png',
+        selectedIconPath: '../assets/images/tabBar/user-active.png',
+        text: '云村'
+      },
+      {
+        pagePath: '/pages/playListDetail/index',
+        iconPath: '../assets/images/tabBar/user.png',
+        selectedIconPath: '../assets/images/tabBar/user-active.png',
+        text: '视频'
+      }
+    ]
   }
 
   switchTab = (item) => {
@@ -42,15 +52,14 @@ class customTabBar extends Component {
   }
 
   componentDidMount() {
-    // this.setState({
-    //   selected: this.props.ind
-    // })
+    this.setState({
+      selected: this.props.ind
+    })
   }
 
   // 自定义 tabBar的页面
   render() {
-    const {selected} = this.state
-    console.log(selected)
+
     return (
       <CoverView className='tab-bar'>
         <CoverView className='tab-bar-wrap'>
@@ -61,7 +70,7 @@ class customTabBar extends Component {
                 data-path={item.pagePath}
                 key={item.text}
               >
-                <CoverImage className='tab-bar-wrap-item-icon' src={this.state.selected === index ? item.selectedIconPath : item.iconPath} />
+                {/* <CoverImage className='tab-bar-wrap-item-icon' src={this.state.selected === index ? item.selectedIconPath : item.iconPath} /> */}
                 <CoverView className='tab-bar-wrap-item-btn'
                   style={{color: this.state.selected === index ? this.state.selectedColor : this.state.color}}
                 >{item.text}
@@ -70,7 +79,10 @@ class customTabBar extends Component {
             })
           }
         </CoverView>
-        <CoverImage className='intellect-icon' src={Intellect} onClick={this.jumpIntellect} />
+        {/* <CoverView className='intellect'>
+          <CoverImage className='intellect-icon' src={Intellect} onClick={this.jumpIntellect} />
+        </CoverView> */}
+
       </CoverView>
     )
   }

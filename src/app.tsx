@@ -9,7 +9,11 @@ import './app.less'
 import 'taro-ui/dist/style/index.scss'
 import './assets/iconFont/icon.scss'
 import './assets/iconFont/iconfont.scss'
-
+import Intellect from './assets/images/tabBar/intellect.png'
+import homeActive from './assets/images/tabBar/home-active.png'
+import home from './assets/images/tabBar/home.png'
+import user from './assets/images/tabBar/user.png'
+import userActive from './assets/images/tabBar/user-active.png'
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
@@ -43,30 +47,24 @@ class App extends Component {
       navigationBarTextStyle: 'white'
     },
     tabBar: {
-      color: '#7A7E83',
-      selectedColor: '#c73420',
+      color: '#666',
+      selectedColor: '#ed6c00',
+      backgroundColor: '#fafafa',
       borderStyle: 'black',
-      position:'top',
-      backgroundColor: '#ffffff',
-      custom:true,
+      custom: true,
       list: [{
-        text: '发现',
-        pagePath: 'pages/index/index',
-        // iconPath: 'assets/images/music.png',
-        // selectedIconPath: 'assets/images/selected-music.png',
-      },
-      {
-        text: '我的',
-        pagePath: 'pages/index/index',
-        // iconPath: 'assets/images/love.png',
-        // selectedIconPath: 'assets/images/selected-love.png',
-      },
-      {
-        text: '账号',
-        pagePath: 'pages/index/index',
-        // iconPath: 'assets/images/me.png',
-        // selectedIconPath: 'assets/images/selected-me.png',
-      }]
+          pagePath: 'pages/index/index',
+          iconPath: './assets/images/tabBar/home.png',
+          selectedIconPath: './assets/images/tabBar/home-active.png',
+          text: '主页'
+        },
+        {
+          pagePath: 'pages/playListDetail/index',
+          iconPath: './assets/images/tabBar/user.png',
+          selectedIconPath: './assets/images/tabBar/user-active.png',
+          text: '我的'
+        }
+      ]
     },
     requiredBackgroundModes: ["audio"]
   }
