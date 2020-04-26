@@ -8,12 +8,13 @@ import {
   Swiper,
   SwiperItem
 } from "@tarojs/components";
-import { AtTabBar, AtSearchBar, AtIcon } from 'taro-ui'
+import { AtTabs, AtTabsPane, AtSearchBar, AtIcon } from 'taro-ui'
 import { connect } from "@tarojs/redux";
 import PlayList from '../../components/PlayList'
 import API from '../../services/api'
 import { add, minus, asyncAdd } from "../../actions/counter";
 import { getRecommendPlayList } from "../../actions/song";
+import PlayListDetail from '../playListDetail/index.tsx'
 
 import "./index.less";
 
@@ -115,6 +116,11 @@ class Index extends Component {
      url: `/pages/playListDetail/index?id=${item.id}&name=${item.name}`
    })
  }
+ handleClick (value) {
+  this.setState({
+    current: value
+  })
+}
  componentDidMount() {
    /*获取推荐歌单*/
     this.props.getRecommendPlayList()
@@ -151,8 +157,20 @@ class Index extends Component {
   render() {
     const {bannerList,searchValue} = this.state
     const {recommendPlayList } = this.props
+    const tabList = [{ title: '我的' }, { title: '发现' }, { title: '云村' }]
     return (
       <View className="index_container">
+      <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
+          <AtTabsPane current={this.state.current} index={0} >
+            <PlayListDetail/>
+          </AtTabsPane>
+          <AtTabsPane current={this.state.current} index={1}>
+            <PlayListDetail/>
+          </AtTabsPane>
+          <AtTabsPane current={this.state.current} index={2}>
+            <View style='padding: 100px 50px;text-align: center;'><PlayListDetail/></View>
+          </AtTabsPane>
+        </AtTabs>
         <AtSearchBar
           actionName='搜一下'
           value={searchValue}

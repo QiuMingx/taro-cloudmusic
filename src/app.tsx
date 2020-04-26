@@ -51,7 +51,7 @@ class App extends Component {
       selectedColor: '#ed6c00',
       backgroundColor: '#fafafa',
       borderStyle: 'black',
-      custom: true,
+      // custom: true,
       list: [{
           pagePath: 'pages/index/index',
           iconPath: './assets/images/tabBar/home.png',
