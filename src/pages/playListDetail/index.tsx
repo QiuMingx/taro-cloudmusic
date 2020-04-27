@@ -10,7 +10,7 @@ import {
 } from "@tarojs/components";
 import { AtTabBar, AtSearchBar, AtIcon } from 'taro-ui'
 import { connect } from "@tarojs/redux";
-
+import {getPlayListDetail} from "../../actions/song";
 import { add, minus, asyncAdd } from "../../actions/counter";
 
 import "./index.less";
@@ -54,10 +54,13 @@ interface PlayListDetail {
 }
 
 @connect(
-  ({ counter }) => ({
-    counter
+  ({ song }) => ({
+    song: song,
   }),
   dispatch => ({
+    getPlayListDetail(payload) {
+      dispatch(getPlayListDetail(payload));
+    },
     add() {
       dispatch(add());
     },
@@ -1864,6 +1867,17 @@ class PlayListDetail extends Component {
     }
     }
   }
+
+  componentWillMount() {
+     const { id, name } = this.$router.params;
+     Taro.setNavigationBarTitle({
+       title: name
+     });
+     this.props.getPlayListDetail({
+       id
+     });
+   }
+
   formatPlayCount = count =>{
     return count < 10000 ? count : `${Number(count/10000).toFixed(0)}万`
   }
@@ -1889,38 +1903,37 @@ class PlayListDetail extends Component {
   componentDidHide() {}
 
   render() {
-    const { playListDetail } = this.state
-    if (!playListDetail) return
+    const {playListDetailInfo,} = this.props.song;
     return (
       <View className="playListDetail_container">
         <View className='playList__header'>
           <Image
             className='playList__header__bg'
-            src={playListDetail.coverImgUrl}
+            src={playListDetailInfo.coverImgUrl}
           />
           <View className='playList__header__cover'>
             <Image
               className='playList__header__cover__img'
-              src={playListDetail.coverImgUrl}
+              src={playListDetailInfo.coverImgUrl}
             />
             <Text className='playList__header__cover__desc'>歌单</Text>
             <View className='playList__header__cover__num'>
               <Text className='at-icon at-icon-sound'></Text>
               {
-                this.formatPlayCount(playListDetail.playCount)
+                this.formatPlayCount(playListDetailInfo.playCount)
               }
             </View>
           </View>
           <View className='playList__header__info'>
             <View className='playList__header__info__title'>
-              {playListDetail.name}
+              {playListDetailInfo.name}
             </View>
             <View className='playList__header__info__user'>
               <Image
                 className='playList__header__info__user_avatar'
-                src={playListDetail.creator.avatarUrl}
+                src={playListDetailInfo.creator.avatarUrl}
               />
-              {playListDetail.creator.nickname}
+              {playListDetailInfo.creator.nickname}
             </View>
           </View>
         </View>
@@ -1928,17 +1941,17 @@ class PlayListDetail extends Component {
           <View className='playList__header__more__tag'>
              标签：
              {
-               playListDetail.tags.map(tag =>
+               playListDetailInfo.tags.map(tag =>
                  <Text key={tag} className='playList__header__more__tag__item'>
                   {tag}
                 </Text>)
              }
              {
-               playListDetail.tags.length === 0 ? '暂无' : ''
+               playListDetailInfo.tags.length === 0 ? '暂无' : ''
              }
          </View>
          <View className='playList__header__more__desc'>
-             简介：{playListDetail.description || '暂无'}
+             简介：{playListDetailInfo.description || '暂无'}
          </View>
         </View>
         <View className='playList__content'>
@@ -1947,7 +1960,7 @@ class PlayListDetail extends Component {
           </View>
           <View className='playList__content__list'>
             {
-              playListDetail.tracks.map((item,index) =>   <View
+              playListDetailInfo.tracks.map((item,index) =>   <View
                 className='playList__content__list__item'
                 key={item.id}
                 onClick={()=>this.playSong(item.id)}

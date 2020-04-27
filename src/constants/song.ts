@@ -1,2 +1,6 @@
 // 获取推荐歌单
 export const GETRECOMMENDPLAYLIST = 'GETRECOMMENDPLAYLIST'
+// 获取歌单详情
+export const GETPLAYLISTDETAIL = 'GETPLAYLISTDETAIL'
+// 重置播放列表
+export const RESETPLAYLIST = 'RESETPLAYLIST'

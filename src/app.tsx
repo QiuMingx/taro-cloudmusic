@@ -46,26 +46,26 @@ class App extends Component {
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'white'
     },
-    tabBar: {
-      color: '#666',
-      selectedColor: '#ed6c00',
-      backgroundColor: '#fafafa',
-      borderStyle: 'black',
-      // custom: true,
-      list: [{
-          pagePath: 'pages/index/index',
-          iconPath: './assets/images/tabBar/home.png',
-          selectedIconPath: './assets/images/tabBar/home-active.png',
-          text: '主页'
-        },
-        {
-          pagePath: 'pages/playListDetail/index',
-          iconPath: './assets/images/tabBar/user.png',
-          selectedIconPath: './assets/images/tabBar/user-active.png',
-          text: '我的'
-        }
-      ]
-    },
+    // tabBar: {
+    //   color: '#666',
+    //   selectedColor: '#ed6c00',
+    //   backgroundColor: '#fafafa',
+    //   borderStyle: 'black',
+    //   // custom: true,
+    //   list: [{
+    //       pagePath: 'pages/index/index',
+    //       iconPath: './assets/images/tabBar/home.png',
+    //       selectedIconPath: './assets/images/tabBar/home-active.png',
+    //       text: '主页'
+    //     },
+    //     {
+    //       pagePath: 'pages/playListDetail/index',
+    //       iconPath: './assets/images/tabBar/user.png',
+    //       selectedIconPath: './assets/images/tabBar/user-active.png',
+    //       text: '我的'
+    //     }
+    //   ]
+    // },
     requiredBackgroundModes: ["audio"]
   }
 

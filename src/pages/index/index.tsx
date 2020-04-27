@@ -110,8 +110,8 @@ class Index extends Component {
   formatPlayCount = count =>{
     return count < 10000 ? count : `${Number(count/10000).toFixed(0)}万`
   }
+  // 详情页
   goDetail = item => {
-    console.log(item)
    Taro.navigateTo({
      url: `/pages/playListDetail/index?id=${item.id}&name=${item.name}`
    })
@@ -160,7 +160,7 @@ class Index extends Component {
     const tabList = [{ title: '我的' }, { title: '发现' }, { title: '云村' }]
     return (
       <View className="index_container">
-      <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
+      {/* <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
           <AtTabsPane current={this.state.current} index={0} >
             <PlayListDetail/>
           </AtTabsPane>
@@ -170,7 +170,7 @@ class Index extends Component {
           <AtTabsPane current={this.state.current} index={2}>
             <View style='padding: 100px 50px;text-align: center;'><PlayListDetail/></View>
           </AtTabsPane>
-        </AtTabs>
+        </AtTabs> */}
         <AtSearchBar
           actionName='搜一下'
           value={searchValue}
