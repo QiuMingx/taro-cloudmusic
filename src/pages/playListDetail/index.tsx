@@ -1892,13 +1892,7 @@ class PlayListDetail extends Component {
 
   componentWillUnmount() {}
 
-  componentDidShow() {
-      if (typeof this.$scope.getTabBar === 'function' && this.$scope.getTabBar()) {
-        this.$scope.getTabBar().$component.setState({
-          selected: 1
-        })
-      }
-    }
+  componentDidShow() {}
 
   componentDidHide() {}
 
