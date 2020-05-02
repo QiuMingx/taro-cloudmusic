@@ -4,6 +4,7 @@ import {
   GETPLAYLISTDETAIL
 } from '../constants/song'
 import api from '../services/api'
+import { parse_lrc } from '../utils/common'
 
 export const add = () => {
   return {
@@ -64,6 +65,53 @@ export const getPlayListDetail = (payload) => {
           playListDetailInfo,
           playListDetailPrivileges: res.data.privileges
         }
+      })
+    })
+  }
+}
+
+// 获取歌曲详情信息
+export const getSongInfo = (payload) => {
+  const { id } = payload
+  return dispatch => {
+    api.get('/song/detail', {
+      ids: id
+    }).then((res) => {
+      let songInfo = res.data.songs[0]
+      api.get('/song/url', {
+        id
+      }).then((res) => {
+        songInfo.url = res.data.data[0].url
+        api.get('/lyric', {
+          id
+        }).then((res) => {
+          const lrc = parse_lrc(res.data.lrc && res.data.lrc.lyric ? res.data.lrc.lyric : '');
+          res.data.lrclist = lrc.now_lrc;
+          res.data.scroll = lrc.scroll ? 1 : 0
+          songInfo.lrcInfo = res.data
+          dispatch({
+            type: GETSONGINFO,
+            payload: {
+              currentSongInfo: songInfo
+            }
+          })
+        }).catch((err) => {
+          console.log('获取歌词失败', err)
+          dispatch({
+            type: GETSONGINFO,
+            payload: {
+              currentSongInfo: songInfo
+            }
+          })
+        })
+      }).catch((err) => {
+        console.log('获取歌曲url失败', err)
+        dispatch({
+          type: GETSONGINFO,
+          payload: {
+            currentSongInfo: songInfo
+          }
+        })
       })
     })
   }
