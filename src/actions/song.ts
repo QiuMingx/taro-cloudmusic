@@ -1,7 +1,8 @@
 import {
   GETRECOMMENDPLAYLIST,
   RESETPLAYLIST,
-  GETPLAYLISTDETAIL
+  GETPLAYLISTDETAIL,
+  GETSONGINFO
 } from '../constants/song'
 import api from '../services/api'
 import { parse_lrc } from '../utils/common'

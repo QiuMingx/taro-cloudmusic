@@ -5,6 +5,9 @@ import { connect } from "@tarojs/redux";
 import classnames from 'classnames'
 import { add, minus, asyncAdd } from "../../actions/counter";
 import "./index.less";
+import {
+  getSongInfo
+} from "../../actions/song";
 import CSlider from '../../components/CSlider'
 import CLyric from '../../components/CLyric'
 import topImage from '../../assets/images/aag.png'
@@ -33,6 +36,7 @@ type PageStateProps = {
 };
 
 type PageDispatchProps = {
+  getSongInfo: (object) => any;
   add: () => void;
   dec: () => void;
   asyncAdd: () => any;
@@ -55,10 +59,13 @@ interface Index {
 }
 const backgroundAudioManager = Taro.getBackgroundAudioManager()
 @connect(
-  ({ counter }) => ({
-    counter
+  ({ song }) => ({
+      song: song
   }),
   dispatch => ({
+    getSongInfo(object) {
+      dispatch(getSongInfo(object));
+    },
     add() {
       dispatch(add());
     },
@@ -89,87 +96,103 @@ class Page extends Component {
       play: false,
       searchValue:'',
       playPercent: 10 ,
-      currentSongInfo:{
-          "name": "达拉崩吧 (Live)",
-          "id": 1434062381,
-          "pst": 0,
-          "t": 0,
-          "ar": [
-              {
-                  "id": 1030001,
-                  "name": "周深",
-                  "tns": [],
-                  "alias": []
-              }
-          ],
-          "alia": [],
-          "pop": 100,
-          "st": 0,
-          "rt": "",
-          "fee": 8,
-          "v": 1,
-          "crbt": null,
-          "cf": "",
-          "al": {
-              "id": 86840264,
-              "name": "歌手·当打之年 第8期",
-              "picUrl": "http://p1.music.126.net/P11c_X9qdAMT7yXYIMahQw==/109951164840856331.jpg",
-              "tns": [],
-              "pic_str": "109951164840856331",
-              "pic": 109951164840856340
-          },
-          "dt": 245640,
-          "h": {
-              "br": 320000,
-              "fid": 0,
-              "size": 9827565,
-              "vd": -64022
-          },
-          "m": {
-              "br": 192000,
-              "fid": 0,
-              "size": 5896557,
-              "vd": -61489
-          },
-          "l": {
-              "br": 128000,
-              "fid": 0,
-              "size": 3931053,
-              "vd": -59815
-          },
-          "a": null,
-          "cd": "01",
-          "no": 6,
-          "rtUrl": null,
-          "ftype": 0,
-          "rtUrls": [],
-          "djId": 0,
-          "copyright": 0,
-          "s_id": 0,
-          "mark": 8192,
-          "rtype": 0,
-          "rurl": null,
-          "mst": 9,
-          "cp": 1416682,
-          "mv": 0,
-          "publishTime": 0,
-          "alg": "alg_featured"
-      },
+      firstEnter: true
 
     }
   }
+  setSongInfo=(songInfo)=> {
+      try {
+        const { name, al, url, lrcInfo } = songInfo;
+        Taro.setNavigationBarTitle({
+          title: name
+        });
+        backgroundAudioManager.title = name;
+        backgroundAudioManager.coverImgUrl = al.picUrl;
+        backgroundAudioManager.src = url;
+        this.setState({
+          lrc: lrcInfo,
+          isPlaying: true,
+          firstEnter: false
+        });
+      } catch (err) {
+        console.log("err", err);
+        this.getNextSong();
+      }
+  }
+  componentDidMount(){
+    let _this = this
+    const { id } = this.$router.params;
+    this.props.getSongInfo({
+      id
+    });
+    //监听背景音频播放进度更新事件
+    backgroundAudioManager.onTimeUpdate(() => {
+      Taro.getBackgroundAudioPlayerState({
+        success(res) {
+          if (res.status !== 2) {
+            _this.updateLrc(res.currentPosition);
+            _this.updateProgress(res.currentPosition);
+          }
+        }
+      });
+    });
+    backgroundAudioManager.onPause(() => {
+      _this.setState({
+        isPlaying: false
+      });
+    });
+    backgroundAudioManager.onPlay(() => {
+      _this.setState({
+        isPlaying: true
+      });
+    });
+    //监听背景音频自然播放结束事件
+    backgroundAudioManager.onEnded(() => {
+       const { playMode } = _this.props.song;
+       const routes = Taro.getCurrentPages();
+       const currentRoute = routes[routes.length - 1].route;
+       // 如果在当前页面则直接调用下一首的逻辑，反之则触发nextSong事件
+       if (currentRoute === "pages/songDetail/index") {
+         _this.playByMode(playMode);
+       } else {
+         Taro.eventCenter.trigger("nextSong");
+       }
+     });
+
+  }
+  updateLrc = (currentPosition)=> {
+    const { lrc } = this.state;
+    let lrcIndex = 0;
+    if (lrc && !lrc.scroll && lrc.lrclist && lrc.lrclist.length > 0) {
+      lrc.lrclist.forEach((item, index) => {
+        if (item.lrc_sec <= currentPosition) {
+          lrcIndex = index;
+        }
+      });
+    }
+    this.setState({
+      lrcIndex
+    });
+  }
+
+  updateProgress=(currentPosition)=> {
+    const { dt } = this.props.song.currentSongInfo;
+    this.setState({
+      playPercent: Math.floor((currentPosition * 1000 * 100) / dt)
+    });
+  }
   playMusic = () => {
-    this.setState((prevState, props)=>({
-     play: true
-   }))
-   backgroundAudioManager.title='追光者'
-   backgroundAudioManager.src = 'http://m8.music.126.net/20200411003213/233159ef3cf4c4b73503a4bb71525182/ymusic/9313/cfac/35ad/332d8257716efd86d075809e61cfd5d5.mp3'
-   backgroundAudioManager.play()
+    console.log('0',this.props.song.currentSongInfo)
+
+    backgroundAudioManager.play();
+    this.setState({
+      isPlaying: true
+    });
   }
   pauseMusic =()=> {
     backgroundAudioManager.pause()
     this.setState({
-      play: false
+      isPlaying: false
     })
   }
   // componentDidMount(){
@@ -184,7 +207,6 @@ class Page extends Component {
   //    })
   // }
   percentChange = (e) => {
-    console.log(e)
     const { value } = e.detail
     const { dt } = this.props.song.currentSongInfo
     let currentPosition = Math.floor((dt / 1000) * value / 100)
@@ -196,7 +218,18 @@ class Page extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps);
+    // console.log(this.props, nextProps);
+    // this.setStar(
+    //   nextProps.song.likeMusicList,
+    //   nextProps.song.currentSongInfo.id
+    // );
+    if (this.props.song.currentSongInfo.name !==nextProps.song.currentSongInfo.name
+    ||this.state.firstEnter) {
+      this.setState({
+        firstEnter: false
+      });
+      this.setSongInfo(nextProps.song.currentSongInfo);
+    }
   }
 
   componentWillUnmount() {}
@@ -207,6 +240,7 @@ class Page extends Component {
 
   render() {
     const {play} = this.state
+    const { currentSongInfo, playMode } = this.props.song;
     const { isPlaying, showLyric, lrc, lrcIndex, star, playPercent } = this.state
     return (
       <View className='song_container'>
@@ -217,17 +251,17 @@ class Page extends Component {
         <View className='song__music'>
           <View className='song__music__main'>
             <Image
-            className={play ? 'song__music__main__needle play ' : 'song__music__main__needle '}
+            className={isPlaying ? 'song__music__main__needle play ' : 'song__music__main__needle '}
             src={topImage}
             />
             <View className='song__music__main__cover'>
               <View className={
                 classnames({
                   song__music__main__img: true,
-                  'z-pause': !play,
+                  'z-pause': !isPlaying,
                   circling: true
                 })}>
-                <Image className='song__music__main__img__cover' src={currentSongInfo.al.picUrl} />
+                <Image className='song__music__main__img__cover' src ={currentSongInfo.al.picUrl} />
               </View>
             </View>
           </View>
@@ -245,7 +279,7 @@ class Page extends Component {
               className='song__operation__prev'
             />
             {
-                play ? <Image src={stopIcon} className='song__operation__play' onClick={()=>this.pauseMusic()}/> :
+                isPlaying ? <Image src={stopIcon} className='song__operation__play' onClick={()=>this.pauseMusic()}/> :
                 <Image src={playIcon} className='song__operation__play' onClick={()=>this.playMusic()}/>
             }
 

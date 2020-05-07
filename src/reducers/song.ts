@@ -1,7 +1,8 @@
 import {
   GETRECOMMENDPLAYLIST,
   RESETPLAYLIST,
-  GETPLAYLISTDETAIL
+  GETPLAYLISTDETAIL,
+  GETSONGINFO
 } from '../constants/song'
 
 const INITIAL_STATE = {
@@ -72,6 +73,23 @@ export default function song (state = INITIAL_STATE, action) {
         playListDetailInfo: INITIAL_STATE.playListDetailInfo,
         playListDetailPrivileges: [],
         canPlayList: []
+      }
+      // 获取歌曲详情
+    case GETSONGINFO:
+      const { currentSongInfo } = action.payload
+      let currentSongIndex = state.canPlayList.findIndex(item => item.id === currentSongInfo.id)
+      state.canPlayList.map((item, index) => {
+        item.current = false
+        if (currentSongIndex === index) {
+          item.current = true
+        }
+        return item
+      })
+      return {
+        ...state,
+        currentSongInfo,
+        currentSongIndex,
+        canPlayList: state.canPlayList
       }
      default:
        return state
