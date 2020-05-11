@@ -100,25 +100,7 @@ class Page extends Component {
 
     }
   }
-  setSongInfo=(songInfo)=> {
-      try {
-        const { name, al, url, lrcInfo } = songInfo;
-        Taro.setNavigationBarTitle({
-          title: name
-        });
-        backgroundAudioManager.title = name;
-        backgroundAudioManager.coverImgUrl = al.picUrl;
-        backgroundAudioManager.src = url;
-        this.setState({
-          lrc: lrcInfo,
-          isPlaying: true,
-          firstEnter: false
-        });
-      } catch (err) {
-        console.log("err", err);
-        this.getNextSong();
-      }
-  }
+
   componentDidMount(){
     let _this = this
     const { id } = this.$router.params;
@@ -160,6 +142,7 @@ class Page extends Component {
      });
 
   }
+
   updateLrc = (currentPosition)=> {
     const { lrc } = this.state;
     let lrcIndex = 0;
@@ -181,6 +164,7 @@ class Page extends Component {
       playPercent: Math.floor((currentPosition * 1000 * 100) / dt)
     });
   }
+
   playMusic = () => {
     console.log('0',this.props.song.currentSongInfo)
 
@@ -189,23 +173,33 @@ class Page extends Component {
       isPlaying: true
     });
   }
+
   pauseMusic =()=> {
     backgroundAudioManager.pause()
     this.setState({
       isPlaying: false
     })
   }
-  // componentDidMount(){
-  //   backgroundAudioManager.onTimeUpdate(() => {
-  //      Taro.getBackgroundAudioPlayerState({
-  //        success(res) {
-  //          if (res.status !== 2) {
-  //            console.log('11')
-  //          }
-  //        }
-  //      })
-  //    })
-  // }
+  //设置歌曲信息
+  setSongInfo=(songInfo)=> {
+    try {
+      const { name, al, url, lrcInfo } = songInfo;
+      Taro.setNavigationBarTitle({
+        title: name
+      });
+      backgroundAudioManager.title = name;
+      backgroundAudioManager.coverImgUrl = al.picUrl;
+      backgroundAudioManager.src = url;
+      this.setState({
+        lrc: lrcInfo,
+        isPlaying: true,
+        firstEnter: false
+      });
+    } catch (err) {
+      console.log("err", err);
+      this.getNextSong();
+    }
+  }
   percentChange = (e) => {
     const { value } = e.detail
     const { dt } = this.props.song.currentSongInfo
