@@ -1,0 +1,33 @@
+// @import '../../assets/styles/theme.scss';
+.layout-body{
+  padding-top: 0px;
+}
+.playlist{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-between;
+  border-top: 1PX solid #d6e4ef;
+  .info{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: #000;
+    .sub-text{
+      font-size: 26px;
+      color: #fff;
+    }
+  }
+  &.active{
+    .info{
+      color: #d43c33;
+      .sub-text{
+        color: #d43c33;
+      }
+    }
+  }
+  .icon{
+    font-size: 36px;
+    color: #fff;
+  }
+}

@@ -10,6 +10,7 @@ import {
 } from "../../actions/song";
 import CSlider from '../../components/CSlider'
 import CLyric from '../../components/CLyric'
+import CPlayList from '../../components/CPlayList'
 import topImage from '../../assets/images/aag.png'
 import stopIcon from '../../assets/images/ajd.png'
 import playIcon from '../../assets/images/ajf.png'
@@ -96,7 +97,8 @@ class Page extends Component {
       play: false,
       searchValue:'',
       playPercent: 10 ,
-      firstEnter: true
+      firstEnter: true,
+      isOpened: true,
 
     }
   }
@@ -211,6 +213,33 @@ class Page extends Component {
     backgroundAudioManager.pause()
   }
 
+  handleCPlayList=()=> {
+    this.setState({
+      isOpened: !this.state.isOpened
+    })
+  }
+
+  doPlaySong=(song)=> {
+    const { playSingle, } = this.props
+    if (!playSingle) return
+    // 没有权限
+    if (song.st === -200) {
+      Taro.showToast({
+        title: '暂无版权',
+        icon: 'none'
+      })
+      return
+    }
+    playSingle({song})
+    const { canPlayList, } = this.props.song
+    const currentSongIndex = canPlayList.findIndex(item => item.id === song.id)
+    this.props.getSongInfo({
+      id: canPlayList[currentSongIndex].id
+    })
+    this.setState({
+      isOpened: false,
+    })
+  }
   componentWillReceiveProps(nextProps) {
     // console.log(this.props, nextProps);
     // this.setStar(
@@ -235,7 +264,7 @@ class Page extends Component {
   render() {
     const {play} = this.state
     const { currentSongInfo, playMode } = this.props.song;
-    const { isPlaying, showLyric, lrc, lrcIndex, star, playPercent } = this.state
+    const { isPlaying, showLyric, lrc, lrcIndex, star, playPercent,isOpened } = this.state
     return (
       <View className='song_container'>
         <Image
@@ -287,6 +316,7 @@ class Page extends Component {
             />
          </View>
        </View>
+       <CPlayList isOpened={isOpened} handleClose={this.handleCPlayList.bind(this)} doPlaySong={this.doPlaySong.bind(this)}/>
       </View>
     );
   }
