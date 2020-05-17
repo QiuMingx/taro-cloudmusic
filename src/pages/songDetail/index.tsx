@@ -18,6 +18,8 @@ import prevIcon from '../../assets/images/ajh.png'
 import nextIcon from '../../assets/images/ajb.png'
 import likeIcon from '../../assets/images/song/play_icn_loved.png'
 import playModeImg from '../../assets/images/song/icn_loop_mode.png'
+import '../../assets/iconFont/iconfont.scss'
+
 
 
 // #region 书写注意
@@ -98,7 +100,7 @@ class Page extends Component {
       searchValue:'',
       playPercent: 10 ,
       firstEnter: true,
-      isOpened: true,
+      isOpened: false,
 
     }
   }
@@ -288,6 +290,37 @@ class Page extends Component {
               </View>
             </View>
           </View>
+        </View>
+        <View className='song__bottom_handle'>
+          <View className='song__bottom_handle_top'>
+            <Image
+              src={likeIcon}
+              className='song__bottom_handle__like'
+             />
+            {/* <Text className='icon iconfont icon-xiazai'></Text> */}
+            <Text className='icon iconfont icon-xiazai' onClick={()=>console.log('下载')}></Text>
+            <Text className='icon iconfont icon-cailing-copy'></Text>
+            <Text className='icon iconfont icon-pinglun'></Text>
+            <Text className='icon iconfont icon-gengduo'></Text>
+          </View>
+
+            {/* <Image
+               src={prevIcon}
+               className='song__operation__prev'
+             />
+             {
+                 isPlaying ? <Image src={stopIcon} className='song__operation__play' onClick={()=>this.pauseMusic()}/> :
+                 <Image src={playIcon} className='song__operation__play' onClick={()=>this.playMusic()}/>
+             }
+
+           <Image
+              src={nextIcon}
+              className='song__operation__next'
+            />
+            <Image
+              src={likeIcon}
+              className='song__operation__like'
+             /> */}
         </View>
        <CSlider percent={playPercent} onChange={(e)=>this.percentChange(e)} onChanging={()=>this.percentChanging()} />
        <CLyric lrc={lrc} lrcIndex={lrcIndex} showLyric={showLyric} onTrigger={() => this.hiddenLyric()} />

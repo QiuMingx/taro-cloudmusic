@@ -6,6 +6,69 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "7082006",
+      "name": "收 藏-产品详情",
+      "font_class": "shoucang2",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "14516831",
+      "name": "收 藏 (1)",
+      "font_class": "shoucang1",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "7286432",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "12270642",
+      "name": "pinglun",
+      "font_class": "pinglun",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "1468902",
+      "name": "cailing",
+      "font_class": "cailing",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "4275554",
+      "name": "彩铃",
+      "font_class": "cailing1",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "7594052",
+      "name": "24gl-playlist",
+      "font_class": "24gl-playlist",
+      "unicode": "ea6f",
+      "unicode_decimal": 60015
+    },
+    {
+      "icon_id": "13017993",
+      "name": "xiazai",
+      "font_class": "xiazai",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "14761623",
+      "name": "彩铃",
+      "font_class": "cailing-copy",
+      "unicode": "ea70",
+      "unicode_decimal": 60016
+    },
+    {
       "icon_id": "708724",
       "name": "play",
       "font_class": "play",
