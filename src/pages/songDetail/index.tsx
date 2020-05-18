@@ -293,35 +293,15 @@ class Page extends Component {
         </View>
         <View className='song__bottom_handle'>
           <View className='song__bottom_handle_top'>
-            <Image
-              src={likeIcon}
-              className='song__bottom_handle__like'
-             />
-            {/* <Text className='icon iconfont icon-xiazai'></Text> */}
+
+            <Text className='icon iconfont icon-shoucang1'></Text>
             <Text className='icon iconfont icon-xiazai' onClick={()=>console.log('下载')}></Text>
             <Text className='icon iconfont icon-cailing-copy'></Text>
             <Text className='icon iconfont icon-pinglun'></Text>
             <Text className='icon iconfont icon-gengduo'></Text>
           </View>
-
-            {/* <Image
-               src={prevIcon}
-               className='song__operation__prev'
-             />
-             {
-                 isPlaying ? <Image src={stopIcon} className='song__operation__play' onClick={()=>this.pauseMusic()}/> :
-                 <Image src={playIcon} className='song__operation__play' onClick={()=>this.playMusic()}/>
-             }
-
-           <Image
-              src={nextIcon}
-              className='song__operation__next'
-            />
-            <Image
-              src={likeIcon}
-              className='song__operation__like'
-             /> */}
         </View>
+       {/* <Slider step={0.01} value={playPercent} activeColor='#d43c33' blockColor='#fff' blockSize={24} onChange={this.percentChange.bind(this)} onChanging={this.percentChanging.bind(this)}></Slider> */}
        <CSlider percent={playPercent} onChange={(e)=>this.percentChange(e)} onChanging={()=>this.percentChanging()} />
        <CLyric lrc={lrc} lrcIndex={lrcIndex} showLyric={showLyric} onTrigger={() => this.hiddenLyric()} />
        <View className='song__bottom'>
