@@ -242,6 +242,11 @@ class Page extends Component {
       isOpened: false,
     })
   }
+  handleCPlayList=() =>{
+    this.setState({
+      isOpened: !this.state.isOpened
+    })
+  }
   componentWillReceiveProps(nextProps) {
     // console.log(this.props, nextProps);
     // this.setStar(
@@ -323,10 +328,12 @@ class Page extends Component {
              src={nextIcon}
              className='song__operation__next'
            />
-           <Image
+           <View onClick={this.handleCPlayList}
+             className='icon iconfont icon-24gl-playlist'></View>
+           {/* <Image
              src={likeIcon}
              className='song__operation__like'
-            />
+            /> */}
          </View>
        </View>
        <CPlayList isOpened={isOpened} handleClose={this.handleCPlayList.bind(this)} doPlaySong={this.doPlaySong.bind(this)}/>
