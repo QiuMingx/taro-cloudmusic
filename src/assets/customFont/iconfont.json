@@ -6,6 +6,41 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "2394158",
+      "name": "play-list",
+      "font_class": "play-list",
+      "unicode": "e716",
+      "unicode_decimal": 59158
+    },
+    {
+      "icon_id": "4733261",
+      "name": "play_list",
+      "font_class": "play_list",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "12462569",
+      "name": "play-list",
+      "font_class": "playlist_b",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "1973977",
+      "name": "play",
+      "font_class": "play1",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
+    },
+    {
+      "icon_id": "11367835",
+      "name": "larkcloud_play",
+      "font_class": "ic_play",
+      "unicode": "e787",
+      "unicode_decimal": 59271
+    },
+    {
       "icon_id": "7082006",
       "name": "收 藏-产品详情",
       "font_class": "shoucang2",
@@ -46,13 +81,6 @@
       "font_class": "cailing1",
       "unicode": "e604",
       "unicode_decimal": 58884
-    },
-    {
-      "icon_id": "7594052",
-      "name": "24gl-playlist",
-      "font_class": "24gl-playlist",
-      "unicode": "ea6f",
-      "unicode_decimal": 60015
     },
     {
       "icon_id": "13017993",
