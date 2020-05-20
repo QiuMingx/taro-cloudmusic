@@ -22,6 +22,7 @@ import '../../assets/iconFont/iconfont.scss'
 
 
 
+
 // #region 书写注意
 //
 // 目前 typescript 版本还无法在装饰器模式下将 Props 注入到 Taro.Component 中的 props 属性
@@ -329,7 +330,7 @@ class Page extends Component {
              className='song__operation__next'
            />
            <View onClick={this.handleCPlayList}
-             className='icon iconfont icon-24gl-playlist'></View>
+             className='icon iconfont icon-play-list play-list'></View>
            {/* <Image
              src={likeIcon}
              className='song__operation__like'
