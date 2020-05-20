@@ -23,6 +23,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-play-list:before {
+  content: "\e716";
+}
+
+.icon-play_list:before {
+  content: "\e643";
+}
+
+.icon-playlist_b:before {
+  content: "\e601";
+}
+
+.icon-play1:before {
+  content: "\e69a";
+}
+
+.icon-ic_play:before {
+  content: "\e787";
+}
+
 .icon-shoucang2:before {
   content: "\e600";
 }
@@ -45,10 +65,6 @@
 
 .icon-cailing1:before {
   content: "\e604";
-}
-
-.icon-24gl-playlist:before {
-  content: "\ea6f";
 }
 
 .icon-xiazai:before {
