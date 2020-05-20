@@ -171,10 +171,11 @@ class PlayListDetail extends Component {
              简介：{playListDetailInfo.description || '暂无'}
          </View>
         </View>
+        <View className='playList__content__title sticky'>
+           歌曲列表
+        </View>
         <View className='playList__content'>
-          <View className='playList__content__title'>
-             歌曲列表
-          </View>
+
           <View className='playList__content__list'>
             {
               playListDetailInfo.tracks.map((item,index) =>   <View
