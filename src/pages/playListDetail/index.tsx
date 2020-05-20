@@ -154,7 +154,7 @@ class PlayListDetail extends Component {
             </View>
           </View>
         </View>
-        <View className='playList__header__more'>
+        {/* <View className='playList__header__more'>
           <View className='playList__header__more__tag'>
              标签：
              {
@@ -170,9 +170,14 @@ class PlayListDetail extends Component {
          <View className='playList__header__more__desc'>
              简介：{playListDetailInfo.description || '暂无'}
          </View>
-        </View>
+        </View> */}
         <View className='playList__content__title sticky'>
-           歌曲列表
+           <Text className='icon iconfont icon-ic_play play_list_icon'></Text>
+           <View>
+             <Text>播放全部</Text>
+             <Text>(共30首)</Text>
+           </View>
+
         </View>
         <View className='playList__content'>
 
