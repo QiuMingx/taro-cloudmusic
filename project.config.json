@@ -1,6 +1,6 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "myTest",
+	"projectname": "taro-cloudmusic",
 	"description": "优秀开源项目",
 	"appid": "wx2f228b6d2208da4c",
 	"setting": {
@@ -21,7 +21,9 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"simulatorType": "wechat",
