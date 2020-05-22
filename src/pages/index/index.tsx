@@ -4,18 +4,11 @@ import {
   View,
   Button,
   Text,
-  Image,
-  Swiper,
-  SwiperItem
 } from "@tarojs/components";
-import { AtTabs, AtTabsPane, AtSearchBar, AtIcon } from 'taro-ui'
+import { AtTabs, AtTabsPane } from 'taro-ui'
 import { connect } from "@tarojs/redux";
-import PlayList from '../../components/PlayList'
-import API from '../../services/api'
 import { add, minus, asyncAdd } from "../../actions/counter";
-import { getRecommendPlayList } from "../../actions/song";
-import PlayListDetail from '../playListDetail/index.tsx'
-
+import Find from '../find/index'
 import "./index.less";
 
 // #region 书写注意
@@ -32,49 +25,35 @@ type PageStateProps = {
   counter: {
     num: number;
   };
-  recommendPlayList: Array<{
-    id: number,
-    name: string,
-    picUrl: string,
-    playCount: number
-  }>;
 };
 
 type PageDispatchProps = {
   add: () => void;
   dec: () => void;
   asyncAdd: () => any;
-  getRecommendPlayList: () => any;
 };
 
 type PageOwnProps = {};
 
 type PageState = {
-  current: number,
-  showLoading: boolean,
   bannerList: Array<{
     typeTitle: string,
     pic: string,
     targetId: number
   }>,
-  searchValue: string
 };
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
-interface Index {
+interface PlayListDetail {
   props: IProps;
 }
 
 @connect(
   ({ song }) => ({
     song: song,
-    recommendPlayList: song.recommendPlayList
   }),
   dispatch => ({
-    getRecommendPlayList () {
-      dispatch(getRecommendPlayList())
-    },
     add() {
       dispatch(add());
     },
@@ -98,148 +77,49 @@ class Index extends Component {
     navigationBarTitleText: "网易云音乐"
   };
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      current: 0,
-      showLoading: true,
-      searchValue:'',
-      bannerList: [],
+      current: 1
     }
   }
-  formatPlayCount = count =>{
-    return count < 10000 ? count : `${Number(count/10000).toFixed(0)}万`
+  handleClick(value) {
+    this.setState({
+      current: value,
+    });
   }
-  // 详情页
-  goDetail = item => {
-   Taro.navigateTo({
-     url: `/pages/playListDetail/index?id=${item.id}&name=${item.name}`
-   })
- }
- handleClick (value) {
-  this.setState({
-    current: value
-  })
-}
- componentDidMount() {
-   /*获取推荐歌单*/
-    this.props.getRecommendPlayList()
-    this.getBanner()
- }
+  componentWillMount() {
+  }
+
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() { }
 
-  componentDidShow () {
-   if (typeof this.$scope.getTabBar === 'function' && this.$scope.getTabBar()) {
-     this.$scope.getTabBar().$component.setState({
-       selected: 0
-     })
-   }
- }
+  componentDidShow() { }
 
-  componentDidHide() {}
+  componentDidHide() { }
 
-  getBanner = ()=> {
-    API.get('/banner', {
-      type: 2
-    }).then(({ data }) => {
-      console.log('banner', data)
-      if (data.banners) {
-        this.setState({
-          bannerList: data.banners
-        })
-      }
-    })
-  }
   render() {
-    const {bannerList,searchValue} = this.state
-    const {recommendPlayList } = this.props
-    const tabList = [{ title: '我的' }, { title: '发现' }, { title: '云村' }]
-    return (
-      <View className="index_container">
-      {/* <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
-          <AtTabsPane current={this.state.current} index={0} >
-            <PlayListDetail/>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={1}>
-            <PlayListDetail/>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={2}>
-            <View style='padding: 100px 50px;text-align: center;'><PlayListDetail/></View>
-          </AtTabsPane>
-        </AtTabs> */}
-        <AtSearchBar
-          actionName='搜一下'
-          value={searchValue}
-          onChange={(val)=>console.log(val)}
-        />
-        <Swiper
-         className='index_swiper'
-         indicatorColor='#999'
-         indicatorActiveColor='#333'
-         circular={true}
-         indicatorDots
-         autoplay
-        >
-         {
-            bannerList.map((item) =>
-              <SwiperItem key={item.targetId} className='swiper_item'>
-                <Image src={item.pic} className='img'/>
-              </SwiperItem>
-            )
-        }
-        </Swiper>
-        <View className="handle_list">
-          <View className="handle_list__item"
+    const tabList = [{ title: '我的' }, { title: '发现' }, { title: '云村' },{ title: '视频' }];
+    return <View className="index">
 
-          >
-          <View className="handle_list__item__icon-wrap">
-            <AtIcon
-              prefixClass="fa"
-              value="calendar-minus-o"
-              size="25"
-              color="#ffffff"
-              className="handle_list_item__icon"
-            ></AtIcon>
-          </View>
-          <Text className="handle_list__item__text">每日推荐</Text>
-        </View>
-        </View>
-        <View className='recommend_playlist'>
-          <View className='recommend_playlist__title'>
-            推荐歌单
-          </View>
-          <View className='recommend_playlist__content'>
-            <PlayList
-              goDetail={(item)=>this.goDetail(item)}
-              source={recommendPlayList}
-            />
-            {/* {
-              recommendPlayList&&recommendPlayList.map(item =>
-                <View className='recommend_playlist__item' key={item.id} onClick={()=>this.goDetail(item)}>
-                  <Image
-                      src={item.picUrl+'?imageView&thumbnail=0x200'}
-                      className='recommend_playlist__item__img'
-                    />
-                    <View className='recommend_playlist__item__cover__num'>
-                       <Text className='at-icon at-icon-sound'></Text>
-                      {
-                        this.formatPlayCount(item.playCount)
-                      }
-                    </View>
-                    <View className='recommend_playlist__item__title'>{item.name}</View>
-                </View>)
-            } */}
-
-          </View>
-
-        </View>
-
-      </View>
-    );
+       <AtTabs className="index_tabs" current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
+         <AtTabsPane current={this.state.current} index={0}>
+           <View style="padding: 100px 50px;text-align: center;">我的</View>
+         </AtTabsPane>
+         <AtTabsPane current={this.state.current} index={1}>
+           <Find/>
+         </AtTabsPane>
+         <AtTabsPane current={this.state.current} index={2}>
+           <View style="padding: 100px 50px;text-align: center;">云村</View>
+         </AtTabsPane>
+         <AtTabsPane current={this.state.current} index={3}>
+           <View style="padding: 100px 50px;text-align: center;">视频</View>
+         </AtTabsPane>
+       </AtTabs>
+     </View>;
   }
 }
 

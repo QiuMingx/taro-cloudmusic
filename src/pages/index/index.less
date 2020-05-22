@@ -1,91 +1,10 @@
-.index_container {
-  padding-bottom: 120px;
-
-
-  .swiper_item{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .img {
-      width: 90%;
-      height: 100%;
-      border-radius: 15px;
-      margin:0 20px;
-    }
-  }
-  .handle_list {
-      overflow: hidden;
-      margin-top: 40px;
-      padding: 0 40px;
-      .handle_list__item {
-          width: 20%;
-          float: left;
-          text-align: center;
-          .handle_list__item__icon-wrap {
-              background-color: #d43c33;;
-              width: 100px;
-              height: 100px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              border-radius: 50%;
-              margin: 0 auto;
-          }
-          .handle_list_item__icon {
-              margin-left: 5px;
-          }
-          .handle_list__item__text {
-              font-size: 24px;
-          }
-      }
-  }
-  .recommend_playlist {
-    padding: 40px;
-    overflow: hidden;
-
-    .recommend_playlist__title {
-      margin-bottom: 30px;
-    }
-
-    .recommend_playlist__content {
-      display: flex;
-      justify-content: space-between;
-      flex-direction: row;
-      flex-wrap: wrap;
-      .recommend_playlist__item {
-        width: 32%;
-        margin-bottom:30px;
-        position: relative;
-        .recommend_playlist__item__cover__num {
-            font-size: 20px;
-            position: absolute;
-            right: 10px;
-            top: 0;
-            font-weight: 700;
-            z-index: 3;
-            display: flex;
-            align-items: center;
-            color: #fff;
-            .at-icon-sound {
-                margin-right: 10px;
-            }
-        }
-        .recommend_playlist__item__img {
-          width: 100%;
-          height: 200px;
-          border-radius: 12px;
-        }
-        .recommend_playlist__item__title {
-           overflow: hidden;
-           text-overflow: ellipsis;
-           display: -webkit-box;
-           -webkit-line-clamp: 2;
-           -webkit-box-orient: vertical;
-           font-size: 26px;
-           margin-top: 10px;
-           height: 72px;
-        }
-      }
+.index {
+  flex-direction: column;
+  width: 100%;
+  .index_tabs{
+    .at-tabs__header{
+      position: fixed;
+      z-index: 9999
     }
   }
 }
