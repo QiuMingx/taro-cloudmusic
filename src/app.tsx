@@ -2,6 +2,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 
 import Index from './pages/index'
+// import App from '.pages/app'
 
 import configStore from './store'
 
@@ -33,18 +34,19 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-
-      'pages/songDetail/index',
       'pages/index/index',
-
       'pages/playListDetail/index',
+      'pages/songDetail/index',
+
+
 
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#d43c33',
       navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'white'
+      navigationBarTextStyle: 'white',
+      // navigationStyle:"custom"
     },
     // tabBar: {
     //   color: '#666',
