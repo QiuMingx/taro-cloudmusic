@@ -107,7 +107,7 @@ class Index extends Component {
 
        <AtTabs className="index_tabs" current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
          <AtTabsPane current={this.state.current} index={0}>
-           <View style="padding: 100px 50px;text-align: center;">我的</View>
+           <View style="padding: 100px 50px;text-align: center;">我的页面-待开发</View>
          </AtTabsPane>
          <AtTabsPane current={this.state.current} index={1}>
            <Find/>
