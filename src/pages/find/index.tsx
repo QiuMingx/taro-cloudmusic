@@ -72,7 +72,7 @@ interface Index {
     recommendPlayList: song.recommendPlayList
   }),
   dispatch => ({
-    getRecommendPlayList () {
+    getRecommendPlayList() {
       dispatch(getRecommendPlayList())
     },
     add() {
@@ -98,51 +98,51 @@ class Find extends Component {
     navigationBarTitleText: "网易云音乐"
   };
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       current: 0,
       showLoading: true,
-      searchValue:'',
+      searchValue: '',
       bannerList: [],
     }
   }
-  formatPlayCount = count =>{
-    return count < 10000 ? count : `${Number(count/10000).toFixed(0)}万`
+  formatPlayCount = count => {
+    return count < 10000 ? count : `${Number(count / 10000).toFixed(0)}万`
   }
   // 详情页
   goDetail = item => {
-   Taro.navigateTo({
-     url: `/pages/playListDetail/index?id=${item.id}&name=${item.name}`
-   })
- }
- handleClick (value) {
-  this.setState({
-    current: value
-  })
-}
- componentDidMount() {
-   /*获取推荐歌单*/
+    Taro.navigateTo({
+      url: `/pages/playListDetail/index?id=${item.id}&name=${item.name}`
+    })
+  }
+  handleClick(value) {
+    this.setState({
+      current: value
+    })
+  }
+  componentDidMount() {
+    /*获取推荐歌单*/
     this.props.getRecommendPlayList()
     this.getBanner()
- }
+  }
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() { }
 
-  componentDidShow () {
-   if (typeof this.$scope.getTabBar === 'function' && this.$scope.getTabBar()) {
-     this.$scope.getTabBar().$component.setState({
-       selected: 0
-     })
-   }
- }
+  componentDidShow() {
+    if (typeof this.$scope.getTabBar === 'function' && this.$scope.getTabBar()) {
+      this.$scope.getTabBar().$component.setState({
+        selected: 0
+      })
+    }
+  }
 
-  componentDidHide() {}
+  componentDidHide() { }
 
-  getBanner = ()=> {
+  getBanner = () => {
     API.get('/banner', {
       type: 2
     }).then(({ data }) => {
@@ -155,46 +155,80 @@ class Find extends Component {
     })
   }
   render() {
-    const {bannerList,searchValue} = this.state
-    const {recommendPlayList } = this.props
+    const { bannerList, searchValue } = this.state
+    const { recommendPlayList } = this.props
     return (
       <View className="index_container">
         <AtSearchBar
           actionName='搜一下'
           value={searchValue}
-          onChange={(val)=>console.log(val)}
+          onChange={(val) => console.log(val)}
         />
         <Swiper
-         className='index_swiper'
-         indicatorColor='#999'
-         indicatorActiveColor='#333'
-         circular={true}
-         indicatorDots
-         autoplay
+          className='index_swiper'
+          indicatorColor='#999'
+          indicatorActiveColor='#333'
+          circular={true}
+          indicatorDots
+          autoplay
         >
-         {
+          {
             bannerList.map((item) =>
               <SwiperItem key={item.targetId} className='swiper_item'>
-                <Image src={item.pic} className='img'/>
+                <Image src={item.pic} className='img' />
               </SwiperItem>
             )
-        }
+          }
         </Swiper>
         <View className="handle_list">
-          <View className="handle_list__item"
-
-          >
-          <View className="handle_list__item__icon-wrap">
-            <AtIcon
-              prefixClass="fa"
-              value="calendar-minus-o"
-              size="25"
-              color="#ffffff"
-              className="handle_list_item__icon"
-            ></AtIcon>
+          <View className="handle_list__item">
+            <View className="handle_list__item__icon-wrap">
+              <AtIcon
+                prefixClass="fa"
+                value="calendar-minus-o"
+                size="25"
+                color="#ffffff"
+                className="handle_list_item__icon"
+              ></AtIcon>
+            </View>
+            <Text className="handle_list__item__text">每日推荐</Text>
           </View>
-          <Text className="handle_list__item__text">每日推荐</Text>
-        </View>
+          <View className="handle_list__item">
+            <View className="handle_list__item__icon-wrap">
+              <AtIcon
+                prefixClass="fa"
+                value="calendar-minus-o"
+                size="25"
+                color="#ffffff"
+                className="handle_list_item__icon"
+              ></AtIcon>
+            </View>
+            <Text className="handle_list__item__text">歌单</Text>
+          </View>
+          <View className="handle_list__item">
+            <View className="handle_list__item__icon-wrap">
+              <AtIcon
+                prefixClass="fa"
+                value="calendar-minus-o"
+                size="25"
+                color="#ffffff"
+                className="handle_list_item__icon"
+              ></AtIcon>
+            </View>
+            <Text className="handle_list__item__text">排行榜</Text>
+          </View>
+          <View className="handle_list__item">
+            <View className="handle_list__item__icon-wrap">
+              <AtIcon
+                prefixClass="fa"
+                value="calendar-minus-o"
+                size="25"
+                color="#ffffff"
+                className="handle_list_item__icon"
+              ></AtIcon>
+            </View>
+            <Text className="handle_list__item__text">电台</Text>
+          </View>
         </View>
         <View className='recommend_playlist'>
           <View className='recommend_playlist__title'>
@@ -202,7 +236,7 @@ class Find extends Component {
           </View>
           <View className='recommend_playlist__content'>
             <PlayList
-              goDetail={(item)=>this.goDetail(item)}
+              goDetail={(item) => this.goDetail(item)}
               source={recommendPlayList}
             />
             {/* {
