@@ -239,22 +239,6 @@ class Find extends Component {
               goDetail={(item) => this.goDetail(item)}
               source={recommendPlayList}
             />
-            {/* {
-              recommendPlayList&&recommendPlayList.map(item =>
-                <View className='recommend_playlist__item' key={item.id} onClick={()=>this.goDetail(item)}>
-                  <Image
-                      src={item.picUrl+'?imageView&thumbnail=0x200'}
-                      className='recommend_playlist__item__img'
-                    />
-                    <View className='recommend_playlist__item__cover__num'>
-                       <Text className='at-icon at-icon-sound'></Text>
-                      {
-                        this.formatPlayCount(item.playCount)
-                      }
-                    </View>
-                    <View className='recommend_playlist__item__title'>{item.name}</View>
-                </View>)
-            } */}
 
           </View>
 
