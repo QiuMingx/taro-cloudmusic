@@ -113,10 +113,10 @@ class Index extends Component {
            <Find/>
          </AtTabsPane>
          <AtTabsPane current={this.state.current} index={2}>
-           <View style="padding: 100px 50px;text-align: center;">云村</View>
+           <View style="padding: 100px 50px;text-align: center;">云村-待开发</View>
          </AtTabsPane>
          <AtTabsPane current={this.state.current} index={3}>
-           <View style="padding: 100px 50px;text-align: center;">视频</View>
+           <View style="padding: 100px 50px;text-align: center;">视频-待开发</View>
          </AtTabsPane>
        </AtTabs>
      </View>;
