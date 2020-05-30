@@ -16,7 +16,6 @@ import stopIcon from '../../assets/images/ajd.png'
 import playIcon from '../../assets/images/ajf.png'
 import prevIcon from '../../assets/images/ajh.png'
 import nextIcon from '../../assets/images/ajb.png'
-import likeIcon from '../../assets/images/song/play_icn_loved.png'
 import playModeImg from '../../assets/images/song/icn_loop_mode.png'
 import '../../assets/iconFont/iconfont.scss'
 
