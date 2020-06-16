@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "5651493",
+      "name": "排行",
+      "font_class": "paihang",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "7798130",
+      "name": "日历",
+      "font_class": "rili",
+      "unicode": "e6ef",
+      "unicode_decimal": 59119
+    },
+    {
+      "icon_id": "10183868",
+      "name": "电台",
+      "font_class": "diantai",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "14103965",
+      "name": "歌单",
+      "font_class": "gedan",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
       "icon_id": "2394158",
       "name": "play-list",
       "font_class": "play-list",

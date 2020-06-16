@@ -15,12 +15,20 @@
   font-style: normal;
 }
 
-.iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.icon-paihang:before {
+  content: "\e605";
+}
+
+.icon-rili:before {
+  content: "\e6ef";
+}
+
+.icon-diantai:before {
+  content: "\e603";
+}
+
+.icon-gedan:before {
+  content: "\e602";
 }
 
 .icon-play-list:before {

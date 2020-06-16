@@ -15,7 +15,7 @@ import API from '../../services/api'
 import { add, minus, asyncAdd } from "../../actions/counter";
 import { getRecommendPlayList } from "../../actions/song";
 import PlayListDetail from '../playListDetail/index.tsx'
-
+import '../../assets/iconFont/iconfont.scss'
 import "./index.less";
 
 // #region 书写注意
@@ -159,11 +159,11 @@ class Find extends Component {
     const { recommendPlayList } = this.props
     return (
       <View className="index_container">
-        <AtSearchBar
+        {/* <AtSearchBar
           actionName='搜一下'
           value={searchValue}
           onChange={(val) => console.log(val)}
-        />
+        /> */}
         <Swiper
           className='index_swiper'
           indicatorColor='#999'
@@ -183,13 +183,14 @@ class Find extends Component {
         <View className="handle_list">
           <View className="handle_list__item">
             <View className="handle_list__item__icon-wrap">
-              <AtIcon
+              <Text className='icon iconfont icon-rili'></Text>
+              {/* <AtIcon
                 prefixClass="fa"
                 value="calendar-minus-o"
                 size="25"
                 color="#ffffff"
                 className="handle_list_item__icon"
-              ></AtIcon>
+              ></AtIcon> */}
             </View>
             <Text className="handle_list__item__text">每日推荐</Text>
           </View>
