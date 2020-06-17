@@ -15,6 +15,29 @@
   font-style: normal;
 }
 
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconfont-paihang:before {
+  content: "\e605";
+}
+
+.iconfont-rili:before {
+  content: "\e6ef";
+}
+
+.iconfont-diantai:before {
+  content: "\e603";
+}
+
+.iconfont-gedan:before {
+  content: "\e602";
+}
 .icon-paihang:before {
   content: "\e605";
 }

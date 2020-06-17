@@ -14,8 +14,8 @@ import PlayList from '../../components/PlayList'
 import API from '../../services/api'
 import { add, minus, asyncAdd } from "../../actions/counter";
 import { getRecommendPlayList } from "../../actions/song";
-import PlayListDetail from '../playListDetail/index.tsx'
-import '../../assets/iconFont/iconfont.scss'
+// import PlayListDetail from '../playListDetail/index.tsx'
+// import "../../assets/iconFont/iconfont.scss";
 import "./index.less";
 
 // #region 书写注意
@@ -62,7 +62,7 @@ type PageState = {
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
-interface Index {
+interface Find {
   props: IProps;
 }
 
@@ -183,22 +183,23 @@ class Find extends Component {
         <View className="handle_list">
           <View className="handle_list__item">
             <View className="handle_list__item__icon-wrap">
-              <Text className='icon iconfont icon-rili'></Text>
-              {/* <AtIcon
-                prefixClass="fa"
-                value="calendar-minus-o"
+              {/* <Text className='icon iconfont icon-rili'></Text>
+              <Text className='icon iconfont icon-ic_play'></Text> */}
+              <AtIcon
+                prefixClass="iconfont"
+                value="rili"
                 size="25"
                 color="#ffffff"
                 className="handle_list_item__icon"
-              ></AtIcon> */}
+              ></AtIcon>
             </View>
             <Text className="handle_list__item__text">每日推荐</Text>
           </View>
           <View className="handle_list__item">
             <View className="handle_list__item__icon-wrap">
               <AtIcon
-                prefixClass="fa"
-                value="calendar-minus-o"
+                prefixClass="iconfont"
+                value="gedan"
                 size="25"
                 color="#ffffff"
                 className="handle_list_item__icon"
@@ -209,8 +210,8 @@ class Find extends Component {
           <View className="handle_list__item">
             <View className="handle_list__item__icon-wrap">
               <AtIcon
-                prefixClass="fa"
-                value="calendar-minus-o"
+                prefixClass="iconfont"
+                value="paihang"
                 size="25"
                 color="#ffffff"
                 className="handle_list_item__icon"
@@ -221,8 +222,8 @@ class Find extends Component {
           <View className="handle_list__item">
             <View className="handle_list__item__icon-wrap">
               <AtIcon
-                prefixClass="fa"
-                value="calendar-minus-o"
+                prefixClass="iconfont"
+                value="diantai"
                 size="25"
                 color="#ffffff"
                 className="handle_list_item__icon"
@@ -244,7 +245,6 @@ class Find extends Component {
           </View>
 
         </View>
-
       </View>
     );
   }
