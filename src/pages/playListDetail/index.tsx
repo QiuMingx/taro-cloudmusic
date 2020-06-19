@@ -133,9 +133,9 @@ class PlayListDetail extends Component {
               className='playList__header__cover__img'
               src={playListDetailInfo.coverImgUrl}
             />
-            <Text className='playList__header__cover__desc'>歌单</Text>
+            {/*<Text className='playList__header__cover__desc'>歌单11</Text>*/}
             <View className='playList__header__cover__num'>
-              <Text className='at-icon at-icon-sound'></Text>
+              <Text className='at-icon at-icon-play'></Text>
               {
                 this.formatPlayCount(playListDetailInfo.playCount)
               }
