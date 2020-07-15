@@ -6,6 +6,41 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "13481599",
+      "name": "演出",
+      "font_class": "yanchu1",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "15749204",
+      "name": "论坛",
+      "font_class": "luntan-copy",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "17749",
+      "name": "演出 ",
+      "font_class": "yanchu",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "10308249",
+      "name": "huo",
+      "font_class": "huo",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "9960919",
+      "name": "iconfont图标_视频回放",
+      "font_class": "iconfonttubiao_shipinhuifang",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
       "icon_id": "5651493",
       "name": "排行",
       "font_class": "paihang",
