@@ -1,7 +1,10 @@
 .index_container {
   padding-bottom: 120px;
-
-
+  ::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+  }
   .swiper_item{
     display: flex;
     align-items: center;
@@ -20,6 +23,7 @@
           display: inline-block;
           width: 20%;
           // float: left;
+          margin-left: 15px;
           text-align: center;
           .handle_list__item__icon-wrap {
               // background-color: #d43c33;
@@ -87,6 +91,46 @@
            height: 72px;
         }
       }
+    }
+  }
+  .recommend_scroll_list{
+    padding: 40px 0px 0px 40px;
+    white-space: nowrap;
+  }
+  .recommend_playlist__item {
+    width: 30%;
+    margin-right: 10px;
+    margin-bottom:30px;
+    position: relative;
+      display: inline-block;
+    .recommend_playlist__item__cover__num {
+        font-size: 20px;
+        position: absolute;
+        right: 10px;
+        top: 0;
+        font-weight: 700;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        .at-icon-sound {
+            margin-right: 10px;
+        }
+    }
+    .recommend_playlist__item__img {
+      width: 100%;
+      height: 200px;
+      border-radius: 12px;
+    }
+    .recommend_playlist__item__title {
+       overflow: hidden;
+       text-overflow: ellipsis;
+       display: -webkit-box;
+       -webkit-line-clamp: 2;
+       -webkit-box-orient: vertical;
+       font-size: 26px;
+       margin-top: 10px;
+       height: 72px;
     }
   }
 }
