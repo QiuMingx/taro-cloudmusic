@@ -294,10 +294,33 @@ class Find extends Component {
         </View>
         </ScrollView>
 
-        <View className="handle_list">
+        <View className="recommend_scroll_list">
+          <View className='recommend_playlist__title'>
+            你的歌单精选站
+          </View>
+          <ScrollView
+            scrollX
+            className="handle_list"
+          >
 
-
+          {
+            recommendPlayList&&recommendPlayList.slice(0,6).map(item =>
+              <View className='recommend_playlist__item' key={item.id} onClick={()=>this.goDetail(item)}>
+                <Image
+                    src={item.picUrl+'?imageView&thumbnail=0x200'}
+                    className='recommend_playlist__item__img'
+                  />
+                <View className='recommend_playlist__item__cover__num'>
+                  <Text className='at-icon at-icon-play'></Text>
+                  {this.formatPlayCount(item.playCount)}
+                </View>
+                <View className='recommend_playlist__item__title'>{item.name}</View>
+              </View>)
+          }
+          </ScrollView>
         </View>
+
+
         <View className='recommend_playlist'>
           <View className='recommend_playlist__title'>
             推荐歌单
