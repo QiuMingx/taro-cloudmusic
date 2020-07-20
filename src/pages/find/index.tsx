@@ -319,7 +319,11 @@ class Find extends Component {
           }
           </ScrollView>
         </View>
-
+        <View className="recommend_scroll_list">
+          <View className='recommend_playlist__title'>
+            晴天的浮絮 流动音符
+          </View>
+        </View>
 
         <View className='recommend_playlist'>
           <View className='recommend_playlist__title'>
