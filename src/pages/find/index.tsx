@@ -105,6 +105,74 @@ class Find extends Component {
       showLoading: true,
       searchValue: '',
       bannerList: [],
+      testData:  {
+                "name": "天外来物",
+                "id": 1463165983,
+                "pst": 0,
+                "t": 0,
+                "ar": [
+                    {
+                        "id": 5781,
+                        "name": "薛之谦",
+                        "tns": [],
+                        "alias": []
+                    }
+                ],
+                "alia": [],
+                "pop": 100,
+                "st": 0,
+                "rt": "",
+                "fee": 0,
+                "v": 3,
+                "crbt": null,
+                "cf": "",
+                "al": {
+                    "id": 92510920,
+                    "name": "天外来物",
+                    "picUrl": "http://p1.music.126.net/HvB44MNINoLar8HFbRjIGQ==/109951165142435842.jpg",
+                    "tns": [],
+                    "pic_str": "109951165142435842",
+                    "pic": 109951165142435840
+                },
+                "dt": 257212,
+                "h": {
+                    "br": 320000,
+                    "fid": 0,
+                    "size": 10291244,
+                    "vd": -52235
+                },
+                "m": {
+                    "br": 192000,
+                    "fid": 0,
+                    "size": 6174764,
+                    "vd": -49678
+                },
+                "l": {
+                    "br": 128000,
+                    "fid": 0,
+                    "size": 4116524,
+                    "vd": -48009
+                },
+                "a": null,
+                "cd": "01",
+                "no": 1,
+                "rtUrl": null,
+                "ftype": 0,
+                "rtUrls": [],
+                "djId": 0,
+                "copyright": 1,
+                "s_id": 0,
+                "mark": 128,
+                "originCoverType": 0,
+                "noCopyrightRcmd": null,
+                "rtype": 0,
+                "rurl": null,
+                "mst": 9,
+                "cp": 22036,
+                "mv": 0,
+                "publishTime": 1594915200000,
+                "alg": "alg_featured"
+            }
     }
   }
   formatPlayCount = count => {
@@ -155,8 +223,8 @@ class Find extends Component {
     })
   }
   render() {
-    const { bannerList, searchValue } = this.state
-    const { recommendPlayList } = this.props
+    const { bannerList, searchValue,testData} = this.state
+    const { recommendPlayList,playListDetailInfo } = this.props
     return (
       <View className="index_container">
         {/* <AtSearchBar
@@ -323,6 +391,44 @@ class Find extends Component {
           <View className='recommend_playlist__title'>
             晴天的浮絮 流动音符
           </View>
+          <Swiper className="test-h" next-margin="50px">
+              <SwiperItem style={{width:'-20px'}} >
+                <View className="demo-text-1"  style={{height:'100%',display:'flex',flexDirection: 'column',justifyContent: 'space-between'
+}}>
+                  <View style={{display:'flex'}}>
+                    <Image style={{width:'40px',height:'40px',borderRadius:'5px'}} src={testData.al.picUrl} />
+                    <View>
+                      <Text>{testData.name}</Text>
+                      <Text>{testData.ar[0].name}</Text>
+                    </View>
+                  </View>
+                  <View style={{display:'flex'}}>
+                    <Image style={{width:'40px',height:'40px'}} src={testData.al.picUrl} />
+                    <View>
+                      <Text>{testData.name}</Text>
+                      <Text>{testData.ar[0].name}</Text>
+                    </View>
+                  </View>
+                  <View style={{display:'flex'}}>
+                    <Image style={{width:'40px',height:'40px'}} src={testData.al.picUrl} />
+                    <View>
+                      <Text>{testData.name}</Text>
+                      <Text>{testData.ar[0].name}</Text>
+                    </View>
+                  </View>
+                </View>
+              </SwiperItem>
+              <SwiperItem>
+              <View className="demo-text-2" style={{backgroundColor:'red',height:"100%"}}>
+                  <View>
+
+                  </View>
+                </View>
+              </SwiperItem>
+              <SwiperItem>
+                <View className="demo-text-3" style={{backgroundColor:'yellow'}}>3</View>
+              </SwiperItem>
+          </Swiper>
         </View>
 
         <View className='recommend_playlist'>
