@@ -391,7 +391,7 @@ class Find extends Component {
           <View className='recommend_playlist__title'>
             晴天的浮絮 流动音符
           </View>
-          <Swiper className="test-h" next-margin="50px">
+          <Swiper className="test-h" next-margin="50px" style={{paddingTop:'40px'}}>
               <SwiperItem style={{width:'-20px'}} >
                 <View className="demo-text-1"  style={{height:'100%',display:'flex',flexDirection: 'column',justifyContent: 'space-between'
 }}>
@@ -403,14 +403,14 @@ class Find extends Component {
                     </View>
                   </View>
                   <View style={{display:'flex'}}>
-                    <Image style={{width:'40px',height:'40px'}} src={testData.al.picUrl} />
+                    <Image style={{width:'40px',height:'40px',borderRadius:'5px'}} src={testData.al.picUrl} />
                     <View>
                       <Text>{testData.name}</Text>
                       <Text>{testData.ar[0].name}</Text>
                     </View>
                   </View>
                   <View style={{display:'flex'}}>
-                    <Image style={{width:'40px',height:'40px'}} src={testData.al.picUrl} />
+                    <Image style={{width:'40px',height:'40px',borderRadius:'5px'}} src={testData.al.picUrl} />
                     <View>
                       <Text>{testData.name}</Text>
                       <Text>{testData.ar[0].name}</Text>
