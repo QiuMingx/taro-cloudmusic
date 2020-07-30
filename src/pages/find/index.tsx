@@ -397,9 +397,8 @@ class Find extends Component {
 }}>
                   <View style={{display:'flex'}}>
                     <Image style={{width:'40px',height:'40px',borderRadius:'5px'}} src={testData.al.picUrl} />
-                    <View>
-                      <Text>{testData.name}</Text>
-                      <Text>{testData.ar[0].name}</Text>
+                  <View style={{ paddingLeft:'10px' }}>
+                    <Text>{testData.name} - {testData.ar[0].name}</Text>
                     </View>
                   </View>
                   <View style={{display:'flex'}}>
@@ -417,7 +416,33 @@ class Find extends Component {
                     </View>
                   </View>
                 </View>
-              </SwiperItem>
+            </SwiperItem>
+            <SwiperItem style={{ width: '-20px' }} >
+              <View className="demo-text-1" style={{
+                height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'
+              }}>
+                <View style={{ display: 'flex' }}>
+                  <Image style={{ width: '40px', height: '40px', borderRadius: '5px' }} src={testData.al.picUrl} />
+                  <View style={{ paddingLeft: '10px' }}>
+                    <Text>{testData.name} - {testData.ar[0].name}</Text>
+                  </View>
+                </View>
+                <View style={{ display: 'flex' }}>
+                  <Image style={{ width: '40px', height: '40px', borderRadius: '5px' }} src={testData.al.picUrl} />
+                  <View>
+                    <Text>{testData.name}</Text>
+                    <Text>{testData.ar[0].name}</Text>
+                  </View>
+                </View>
+                <View style={{ display: 'flex' }}>
+                  <Image style={{ width: '40px', height: '40px', borderRadius: '5px' }} src={testData.al.picUrl} />
+                  <View>
+                    <Text>{testData.name}</Text>
+                    <Text>{testData.ar[0].name}</Text>
+                  </View>
+                </View>
+              </View>
+            </SwiperItem>
               <SwiperItem>
               <View className="demo-text-2" style={{backgroundColor:'red',height:"100%"}}>
                   <View>
