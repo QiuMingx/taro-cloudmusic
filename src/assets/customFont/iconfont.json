@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "16279359",
+      "name": "Play",
+      "font_class": "Play-copy",
+      "unicode": "ea71",
+      "unicode_decimal": 60017
+    },
+    {
       "icon_id": "13481599",
       "name": "演出",
       "font_class": "yanchu1",
