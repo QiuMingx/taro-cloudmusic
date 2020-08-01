@@ -393,30 +393,39 @@ class Find extends Component {
           </View>
           <Swiper className="recommend_swiper_list__content" next-margin="50px" style={{paddingTop:'40px'}}>
               <SwiperItem>
-                <View className="demo-text-1"  style={{height:'100%',display:'flex',flexDirection: 'column',justifyContent: 'space-between'
-}}>
-                  <View style={{display:'flex'}}>
+
+                <View className="recommend_swiper_list__content_swiper_item">
+                  {[1,2,3].map(item=><View className="recommend_swiper_list__content_item">
                     <Image className="recommend_swiper_list__content_item_img" src={testData.al.picUrl} />
-                    <View style={{ paddingLeft:'10px' }}>
-                      <Text>{testData.name}</Text>
-                      <Text>- {testData.ar[0].name}</Text>
+                    <View className="recommend_swiper_list__content_item_text">
+                      <View>
+                        <Text className="song_name">{testData.name}</Text>
+                        <Text className="song_artist"> - {testData.ar[0].name}</Text>
+                      </View>
+                        <Text className="song_artist_describe">{testData.name}</Text>
                     </View>
-                    <View style={{ paddingLeft:'10px' }}>
-                      <Text>{testData.name}</Text>
+                    <View style={{position:'absolute',right:'20px'}}>
+                      <AtIcon
+                        prefixClass="iconfont"
+                        value="Play-copy"
+                        size="25"
+                        color="#fc1813"
+                      ></AtIcon>
                     </View>
-                  </View>
-                  <View style={{display:'flex'}}>
+                  </View>)}
+
+                  {/* <View style={{display:'flex'}}>
                     <Image className="recommend_swiper_list__content_item_img" src={testData.al.picUrl} />
                     <View style={{paddingLeft:'10px'}}>
                       <Text>{testData.name}-{testData.ar[0].name}</Text>
                     </View>
-                  </View>
-                  <View style={{display:'flex'}}>
+                  </View> */}
+                  {/* <View style={{display:'flex'}}>
                     <Image className="recommend_swiper_list__content_item_img" src={testData.al.picUrl} />
                     <View style={{paddingLeft:'10px',fontSize:'12px'}}>
                       <Text>{testData.name}-{testData.ar[0].name}</Text>
                     </View>
-                  </View>
+                  </View> */}
                 </View>
             </SwiperItem>
             <SwiperItem style={{ width: '-20px' }} >

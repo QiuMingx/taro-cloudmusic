@@ -49,11 +49,44 @@
     overflow: hidden;
     .recommend_swiper_list__content{
       height: 400px;
+      .recommend_swiper_list__content_swiper_item{
+        height:100%;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .handle_recommend_swiper_list__icon{
+          position: absolute;
+          right: 20px;
+          color: #b1b1b1
+        }
+      }
+      .recommend_swiper_list__content_item{
+        display: flex;
+        align-items: center
+      }
       .recommend_swiper_list__content_item_img{
         width:120px;
         height:120px;
         border-radius:20px;
       }
+      .recommend_swiper_list__content_item_text{
+        padding-left: 20px;
+
+      }
+      .song_name{
+        font-size: 30px;
+      }
+      .song_artist{
+        font-size: 26px;
+        color: #b1b1b1;
+
+      }
+      .song_artist_describe{
+        font-size: 26px;
+        color: #b1b1b1;
+      }
+
+
     }
   }
   .recommend_playlist {
