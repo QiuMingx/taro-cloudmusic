@@ -363,7 +363,7 @@ class Find extends Component {
         </ScrollView>
 
         <View className="recommend_scroll_list">
-          <View className='recommend_playlist__title'>
+          <View className='recommend_list__title'>
             你的歌单精选站
           </View>
           <ScrollView
@@ -388,7 +388,7 @@ class Find extends Component {
           </ScrollView>
         </View>
         <View className="recommend_swiper_list">
-          <View className='recommend_swiper_list__title'>
+          <View className='recommend_list__title'>
             晴天的浮絮 流动音符
           </View>
           <Swiper className="recommend_swiper_list__content" next-margin="50px" style={{paddingTop:'40px'}}>
