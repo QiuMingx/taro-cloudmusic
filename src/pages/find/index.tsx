@@ -395,7 +395,7 @@ class Find extends Component {
               <SwiperItem>
 
                 <View className="recommend_swiper_list__content_swiper_item">
-                  {[1,2,3].map(item=><View className="recommend_swiper_list__content_item">
+                  {[1,2,3].map(item=><View key={item} className="recommend_swiper_list__content_item">
                     <Image className="recommend_swiper_list__content_item_img" src={testData.al.picUrl} />
                     <View className="recommend_swiper_list__content_item_text">
                       <View>
