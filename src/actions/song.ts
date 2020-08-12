@@ -26,16 +26,45 @@ export function asyncAdd () {
     }, 2000)
   }
 }
-// 获取推荐歌单
+// 装换为二维数组
+const songsList = function(list){
+    const items =[]
+    list.forEach((item,index)=>{
+      const children = Math.floor(index / 3)
+      if(!items[children]){
+        items[children]= []
+      }
+      items[children].push(item)
+    })
+    return items
+}
+
+// 获取推荐歌单 - 推荐歌曲
 export const getRecommendPlayList = () => {
   return dispatch => {
     api.get('/personalized').then((res) => {
       let recommendPlayList = res.data.result
-      dispatch({
-        type: GETRECOMMENDPLAYLIST,
-        payload: {
-          recommendPlayList
-        }
+      api.get('/playlist/detail', {
+        id:recommendPlayList[0].id
+      }).then((res) => {
+        let recommendSongList = res.data.playlist
+        recommendSongList.tracks = recommendSongList.tracks.map((item) => {
+          let temp: any = {}
+          temp.name = item.name
+          temp.id = item.id
+          temp.ar = item.ar
+          temp.al = item.al
+          temp.copyright = item.copyright
+          return temp
+        })
+        recommendSongList.tracks =  songsList(recommendSongList.tracks.slice(0,9))
+        dispatch({
+          type: GETRECOMMENDPLAYLIST,
+          payload: {
+            recommendSongList,
+            recommendPlayList
+          }
+        })
       })
     })
   }
