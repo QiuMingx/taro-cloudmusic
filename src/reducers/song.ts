@@ -17,6 +17,17 @@ const INITIAL_STATE = {
     },
     tracks: []
   },
+  recommendSongList: {
+    coverImgUrl: '',
+    name: '',
+    playCount: 0,
+    tags: [],
+    creator: {
+      avatarUrl: '',
+      nickname: ''
+    },
+    tracks: []
+  },
   canPlayList: [],
   playListDetailPrivileges: [],
   recommendPlayList: [],
@@ -50,9 +61,11 @@ export default function song (state = INITIAL_STATE, action) {
   switch (action.type) {
       // 获取歌单详情
      case GETRECOMMENDPLAYLIST:
-       const { recommendPlayList } = action.payload
+       const { recommendPlayList ,recommendSongList} = action.payload
+       console.log(recommendSongList,'pppp')
        return {
          ...state,
+         recommendSongList,
          recommendPlayList
        }
      // 获取歌单详情
