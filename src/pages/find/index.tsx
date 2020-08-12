@@ -69,7 +69,8 @@ interface Find {
 @connect(
   ({ song }) => ({
     song: song,
-    recommendPlayList: song.recommendPlayList
+    recommendPlayList: song.recommendPlayList,
+    recommendSongList: song.recommendSongList
   }),
   dispatch => ({
     getRecommendPlayList() {
@@ -224,7 +225,8 @@ class Find extends Component {
   }
   render() {
     const { bannerList, searchValue,testData} = this.state
-    const { recommendPlayList,playListDetailInfo } = this.props
+    const { recommendPlayList,playListDetailInfo,recommendSongList} = this.props
+
     return (
       <View className="index_container">
         {/* <AtSearchBar
@@ -392,17 +394,18 @@ class Find extends Component {
             晴天的浮絮 流动音符
           </View>
           <Swiper className="recommend_swiper_list__content" next-margin="50px" style={{paddingTop:'40px'}}>
-              <SwiperItem>
+            {
+              recommendSongList.tracks.map((item,index)=><SwiperItem key={index}>
 
                 <View className="recommend_swiper_list__content_swiper_item">
-                  {[1,2,3].map(item=><View key={item} className="recommend_swiper_list__content_item">
-                    <Image className="recommend_swiper_list__content_item_img" src={testData.al.picUrl} />
+                  {item.map(children=><View key={children.id} className="recommend_swiper_list__content_item">
+                    <Image className="recommend_swiper_list__content_item_img" src={children.al.picUrl} />
                     <View className="recommend_swiper_list__content_item_text">
                       <View>
-                        <Text className="song_name">{testData.name}</Text>
-                        <Text className="song_artist"> - {testData.ar[0].name}</Text>
+                        <Text className="song_name">{children.name}</Text>
+                        <Text className="song_artist"> - {children.ar[0].name}</Text>
                       </View>
-                        <Text className="song_artist_describe">{testData.name}</Text>
+                        <Text className="song_artist_describe">{children.name}</Text>
                     </View>
                     <View style={{position:'absolute',right:'20px'}}>
                       <AtIcon
@@ -427,79 +430,12 @@ class Find extends Component {
                     </View>
                   </View> */}
                 </View>
-            </SwiperItem>
-            <SwiperItem style={{ width: '-20px' }} >
-              <View className="demo-text-1" style={{
-                height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'
-              }}>
-                <View style={{ display: 'flex' }}>
-                  <Image style={{ width: '40px', height: '40px', borderRadius: '5px' }} src={testData.al.picUrl} />
-                  <View style={{ paddingLeft: '10px' }}>
-                    <Text>{testData.name} - {testData.ar[0].name}</Text>
-                  </View>
-                </View>
-                <View style={{ display: 'flex' }}>
-                  <Image style={{ width: '40px', height: '40px', borderRadius: '5px' }} src={testData.al.picUrl} />
-                  <View>
-                    <Text>{testData.name}</Text>
-                    <Text>{testData.ar[0].name}</Text>
-                  </View>
-                </View>
-                <View style={{ display: 'flex' }}>
-                  <Image style={{ width: '40px', height: '40px', borderRadius: '5px' }} src={testData.al.picUrl} />
-                  <View>
-                    <Text>{testData.name}</Text>
-                    <Text>{testData.ar[0].name}</Text>
-                  </View>
-                </View>
-              </View>
-            </SwiperItem>
-              <SwiperItem>
-              <View className="demo-text-2" style={{height:'100%',display:'flex',flexDirection: 'column',justifyContent: 'space-between'
-}}>
-                <View style={{display:'flex'}}>
-                  <Image style={{width:'40px',height:'40px',borderRadius:'5px'}} src={testData.al.picUrl} />
-                  <View style={{paddingLeft:'10px'}}>
-                    <Text>{testData.name}-{testData.ar[0].name}</Text>
-                  </View>
-                </View>
-                <View style={{display:'flex'}}>
-                  <Image style={{width:'40px',height:'40px',borderRadius:'5px'}} src={testData.al.picUrl} />
-                  <View style={{paddingLeft:'10px'}}>
-                    <Text>{testData.name}-{testData.ar[0].name}</Text>
-                  </View>
-                </View>
-                <View style={{display:'flex'}}>
-                  <Image style={{width:'40px',height:'40px',borderRadius:'5px'}} src={testData.al.picUrl} />
-                  <View style={{paddingLeft:'10px',fontSize:'12px'}}>
-                    <Text>{testData.name}-{testData.ar[0].name}</Text>
-                  </View>
-                </View>
-                </View>
-              </SwiperItem>
-              <SwiperItem>
-                <View className="demo-text-3" style={{height:'100%',display:'flex',flexDirection: 'column',justifyContent: 'space-between'
-}}>
-                  <View style={{display:'flex'}}>
-                    <Image style={{width:'40px',height:'40px',borderRadius:'5px'}} src={testData.al.picUrl} />
-                    <View style={{paddingLeft:'10px'}}>
-                      <Text>{testData.name}-{testData.ar[0].name}</Text>
-                    </View>
-                  </View>
-                  <View style={{display:'flex'}}>
-                    <Image style={{width:'40px',height:'40px',borderRadius:'5px'}} src={testData.al.picUrl} />
-                    <View style={{paddingLeft:'10px'}}>
-                      <Text>{testData.name}-{testData.ar[0].name}</Text>
-                    </View>
-                  </View>
-                  <View style={{display:'flex'}}>
-                    <Image style={{width:'40px',height:'40px',borderRadius:'5px'}} src={testData.al.picUrl} />
-                    <View style={{paddingLeft:'10px',fontSize:'12px'}}>
-                      <Text>{testData.name}-{testData.ar[0].name}</Text>
-                    </View>
-                  </View>
-                </View>
-              </SwiperItem>
+            </SwiperItem>)
+            }
+
+
+
+
           </Swiper>
         </View>
 
