@@ -391,7 +391,7 @@ class Find extends Component {
         </View>
         <View className="recommend_swiper_list">
           <View className='recommend_list__title'>
-            晴天的浮絮 流动音符
+            晴天的浮絮 流动音符 
           </View>
           <Swiper className="recommend_swiper_list__content" next-margin="50px" style={{paddingTop:'40px'}}>
             {
