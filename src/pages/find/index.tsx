@@ -417,18 +417,6 @@ class Find extends Component {
                     </View>
                   </View>)}
 
-                  {/* <View style={{display:'flex'}}>
-                    <Image className="recommend_swiper_list__content_item_img" src={testData.al.picUrl} />
-                    <View style={{paddingLeft:'10px'}}>
-                      <Text>{testData.name}-{testData.ar[0].name}</Text>
-                    </View>
-                  </View> */}
-                  {/* <View style={{display:'flex'}}>
-                    <Image className="recommend_swiper_list__content_item_img" src={testData.al.picUrl} />
-                    <View style={{paddingLeft:'10px',fontSize:'12px'}}>
-                      <Text>{testData.name}-{testData.ar[0].name}</Text>
-                    </View>
-                  </View> */}
                 </View>
             </SwiperItem>)
             }
