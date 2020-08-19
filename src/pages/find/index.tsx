@@ -420,10 +420,6 @@ class Find extends Component {
                 </View>
             </SwiperItem>)
             }
-
-
-
-
           </Swiper>
         </View>
 
