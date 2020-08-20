@@ -432,9 +432,7 @@ class Find extends Component {
               goDetail={(item) => this.goDetail(item)}
               source={recommendPlayList}
             />
-
           </View>
-
         </View>
       </View>
     );
