@@ -372,7 +372,6 @@ class Find extends Component {
             scrollX
             className="handle_list"
           >
-
           {
             recommendPlayList&&recommendPlayList.slice(0,6).map(item =>
               <View className='recommend_playlist__item' key={item.id} onClick={()=>this.goDetail(item)}>
