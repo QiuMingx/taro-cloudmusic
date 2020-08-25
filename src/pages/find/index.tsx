@@ -392,7 +392,7 @@ class Find extends Component {
           <View className='recommend_list__title'>
             晴天的浮絮 流动音符
           </View>
-          <Swiper className="recommend_swiper_list__content" next-margin="10px" style={{paddingTop:'40px'}}>
+          <Swiper className="recommend_swiper_list__content" next-margin="10px" style={{paddingTop:'20px'}}>
             {
               recommendSongList.tracks.map((item,index)=><SwiperItem key={index}>
 
