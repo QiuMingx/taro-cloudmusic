@@ -366,7 +366,7 @@ class Find extends Component {
 
         <View className="recommend_scroll_list">
           <View className='recommend_list__title'>
-            你的歌单精选站 
+            你的歌单精选站
           </View>
           <ScrollView
             scrollX
@@ -392,7 +392,7 @@ class Find extends Component {
           <View className='recommend_list__title'>
             晴天的浮絮 流动音符
           </View>
-          <Swiper className="recommend_swiper_list__content" next-margin="50px" style={{paddingTop:'40px'}}>
+          <Swiper className="recommend_swiper_list__content" next-margin="10px" style={{paddingTop:'40px'}}>
             {
               recommendSongList.tracks.map((item,index)=><SwiperItem key={index}>
 
@@ -406,7 +406,7 @@ class Find extends Component {
                       </View>
                         <Text className="song_artist_describe">{children.name}</Text>
                     </View>
-                    <View style={{position:'absolute',right:'20px'}}>
+                    <View style={{position:'absolute',right:'10px'}}>
                       <AtIcon
                         prefixClass="iconfont"
                         value="Play-copy"
