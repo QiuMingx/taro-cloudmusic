@@ -366,7 +366,7 @@ class Find extends Component {
 
         <View className="recommend_scroll_list">
           <View className='recommend_list__title'>
-            你的歌单精选站
+            你的歌单精选站 
           </View>
           <ScrollView
             scrollX
